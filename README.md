@@ -7,7 +7,7 @@ usage to support **.NET, Angular, and Agentic AI applications**.
 ---
 
 ## Timeline
-- **Start Date:**03 Jan 2026  
+- **Start Date:** 03 Jan 2026  
 - **Target Completion:** 3 Weeks 
 - **Daily Time:** 1–2 hours
 

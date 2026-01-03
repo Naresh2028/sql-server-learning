@@ -1,97 +1,43 @@
-# Aggregate functions (COUNT, SUM, AVG, MIN, MAX) | GROUP BY (HAVING, grouping sets)
+# Aggregate Functions
 
+## What Are Aggregate Functions?
+Operate on multiple rows and return a single value.
 
-# Aggregate functions (COUNT, SUM, AVG, MIN, MAX)
+## What Problem Do They Solve?
+- Summarizing data
+- Reporting
+- Analytics
 
-## What is Aggregate functions?
-## When to Use
-## When NOT to Use
-## What Problem Does It Solve?
-## Example
-## Common Misconceptions
+## Common Rules (Applies to ALL Aggregates)
+- NULL handling
+- Used with GROUP BY
+- Cannot appear directly in WHERE
 
----
+## Aggregate Functions Overview
 
-# COUNT
-
-## what is COUNT
-
-## Eaxmple
-
-## When To Use
-
----
-
-# SUM
-
-## what is SUM
-
-## Eaxmple
-
-## When To Use
+| Function | Purpose | NULL Handling |
+|--------|--------|---------------|
+| COUNT  | Row count | Ignores NULL |
+| SUM    | Total | Ignores NULL |
+| AVG    | Average | Ignores NULL |
+| MIN    | Lowest value | Considers NULL |
+| MAX    | Highest value | Considers NULL |
 
 ---
 
-# AVG
-
-## what is AVG
-
-## Eaxmple
-
-## When To Use
+## COUNT
+### What it Does
+### When to Use
+### Example
 
 ---
 
-# MIN
-
-## what is MIN
-
-## Eaxmple
-
-## When To Use
-
+## SUM / AVG
+### When to Use
+### Example
 
 ---
 
-# MAX
-
-## what is MAX
-
-## Eaxmple
-
-## When To Use
-
----
-
-# GROUP BY (HAVING, grouping sets)
-
-## What is GROUP BY (HAVING, grouping sets)?
-## When to Use
-## When NOT to Use
-## What Problem Does It Solve?
-## Example
-## Common Misconceptions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## MIN / MAX
+### When to Use
+### Example

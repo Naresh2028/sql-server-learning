@@ -1,4 +1,4 @@
-## case-expression
+# CASE-EXPRESSION
 
 ## What is a case-expression?
 The CASE expression is a scalar expression that returns a value based on conditional logic. 

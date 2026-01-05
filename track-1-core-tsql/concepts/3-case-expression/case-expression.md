@@ -37,12 +37,12 @@ SELECT ProductName,
 FROM Products;
 
 ## When to Use
-<details>
-A. Data Categorization: Labeling numerical ranges (e.g., $0-500$ = 'Cheap', $501+$ = 'Expensive').
-B. Dynamic Formatting: Displaying 1 as 'Active' and 0 as 'Inactive'.
-C. Conditional Aggregation: Using CASE inside a SUM() to count only specific items (e.g., SUM(CASE WHEN Status='Paid' THEN 1 ELSE 0 END)).
-D. Avoiding Errors: Preventing "Divide by Zero" errors by checking the denominator first.
-</details>
+
+### Data Categorization: Labeling numerical ranges (e.g., $0-500$ = 'Cheap', $501+$ = 'Expensive').
+### Dynamic Formatting: Displaying 1 as 'Active' and 0 as 'Inactive'.
+### Conditional Aggregation: Using CASE inside a SUM() to count only specific items (e.g., SUM(CASE WHEN Status='Paid' THEN 1 ELSE 0 END)).
+### Avoiding Errors: Preventing "Divide by Zero" errors by checking the denominator first.
+
 
 ## When NOT to Use
 A. Filtering Rows: Don't use CASE in a WHERE clause for simple filtering; use standard boolean logic (AND/OR) for better performance.

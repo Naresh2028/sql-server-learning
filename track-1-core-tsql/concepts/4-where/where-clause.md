@@ -20,14 +20,19 @@ WHERE Condition1 [AND | OR] Condition2;
 
 ## When to Use
 A. Targeted Retrieval: When you only need a specific record (e.g., WHERE UserID = 101).
+
 B. Range Filtering: Finding data within dates or prices (e.g., WHERE OrderDate >= '2026-01-01').
+
 C. Pattern Matching: Finding names starting with a specific letter (e.g., WHERE CustomerName LIKE 'A%').
+
 D. Security & Multi-tenancy: Ensuring a user only sees their own data (e.g., WHERE TenantID = @CurrentTenant).
 
 ## When NOT to Use
 A. Filtering Groups: Do not use WHERE for conditions on aggregated data (e.g., SUM(Sales) > 1000). For that, you must use the HAVING clause.
+
 B. Complex Logic on Indexed Columns: Avoid using functions on columns in the WHERE clause (e.g., WHERE YEAR(OrderDate) = 2026), 
 as this can prevent SQL Server from using an index (SARGability).
+
   -- Bad (non-SARGable)
   WHERE YEAR(OrderDate) = 2026
 
@@ -37,7 +42,9 @@ as this can prevent SQL Server from using an index (SARGability).
 
 ## What Problem Does It Solve?
 A. Performance: It reduces the amount of data SQL Server has to read from the disk and send over the network.
+
 B. Precision: It prevents "Information Overload" by hiding irrelevant records.
+
 C. Application Logic: It allows your .NET Core backend to fetch exactly what the user requested in the Angular search bar.
 
 ## Example

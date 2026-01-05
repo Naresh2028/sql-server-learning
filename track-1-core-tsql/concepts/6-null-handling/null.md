@@ -1,10 +1,10 @@
-## NULL handling (IS NULL, IS NOT NULL, ISNULL, COALESCE)
+# NULL handling (IS NULL, IS NOT NULL, ISNULL, COALESCE)
 
-### What is NULL ?
+## What is NULL ?
 
-### Analogy
+## Analogy
 
-### Syntax
+## Syntax
 
 ## When to Use
 

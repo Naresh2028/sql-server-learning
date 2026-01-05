@@ -38,7 +38,7 @@ FROM Products;
 
 ## When to Use
 
-###### Data Categorization: Labeling numerical ranges (e.g., $0-500$ = 'Cheap', $501+$ = 'Expensive').
+#### Data Categorization: Labeling numerical ranges (e.g., $0-500$ = 'Cheap', $501+$ = 'Expensive').
 ### Dynamic Formatting: Displaying 1 as 'Active' and 0 as 'Inactive'.
 ### Conditional Aggregation: Using CASE inside a SUM() to count only specific items (e.g., SUM(CASE WHEN Status='Paid' THEN 1 ELSE 0 END)).
 ### Avoiding Errors: Preventing "Divide by Zero" errors by checking the denominator first.

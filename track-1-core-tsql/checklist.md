@@ -2,19 +2,18 @@
 
 ### I. Data Retrieval Basics
 - [x] SELECT statements
-- [ ] Column aliases and expressions
-- [ ] CASE expressions
+- [X] Column aliases and expressions
+- [X] CASE expressions
 
 ### II. Filtering Data
-- [ ] WHERE clause
-- [ ] IN, BETWEEN, LIKE
-- [ ] NULL handling (IS NULL, IS NOT NULL, ISNULL, COALESCE)
+- [X] WHERE clause
+- [X] IN, BETWEEN, LIKE
+- [X] NULL handling (IS NULL, IS NOT NULL, ISNULL, COALESCE)
 
 ### III. Sorting & Limiting Results
-- [ ] ORDER BY
-- [ ] DISTINCT
-- [ ] TOP
-- [ ] OFFSET-FETCH
+- [X] ORDER BY
+- [X] DISTINCT
+- [X] TOP & OFFSET-FETCH
 
 ### IV. Combining Data from Multiple Tables
 - [ ] JOINs (INNER, LEFT, RIGHT, FULL OUTER, CROSS)

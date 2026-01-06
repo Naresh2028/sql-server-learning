@@ -2,6 +2,9 @@
 ### This is the "heart" of SQL. In a relational database, data is split into different tables (Normalization) to stay organized.
 JOINs are how we stitch those pieces back together to tell a complete story.
 
+## Visual Representaion
+![SQL INNER JOIN Venn Diagram](https://i.sstatic.net/UI25E.jpg)
+
 ## What is JOINs?
 A JOIN is a clause used to combine rows from two or more tables based on a related column between them
 (usually a Primary Key from one table and a Foreign Key from another).
@@ -46,9 +49,6 @@ or a Category has no Products, those rows are ignored.
 SELECT p.ProductName, c.CategoryName
 FROM Products p
 INNER JOIN Categories c ON p.CategoryID = c.CategoryID;
-
-## Visual Representaion
-![SQL INNER JOIN Venn Diagram](https://i.sstatic.net/UI25E.jpg)
 
 ## WHEN TO USE
 Use this for "Required" relationships—like showing orders that definitely belong to a customer.

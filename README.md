@@ -29,7 +29,7 @@ usage to support **.NET, Angular, and Agentic AI applications**.
 - [ ] Subqueries
 - [ ] CTEs
 
-**Status:** In Progress (70%)
+**Status:** In Progress (30%)
 
 ---
 

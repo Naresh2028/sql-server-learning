@@ -1,63 +1,31 @@
-## Track 2 – Advanced T-SQL & Data Manipulation
+## Track 2 – Advanced T-SQL & Data Manipulation (Core Only)
 
-### I. Data Modification (DML)
-- [ ] INSERT statements
-- [ ] UPDATE statements
-- [ ] DELETE statements
-- [ ] MERGE statement
-- [ ] OUTPUT clause with DML
+### I. Data Modification
+- [ ] INSERT
+- [ ] UPDATE
+- [ ] DELETE
+- [ ] MERGE (basic understanding)
 - [ ] Transactions (BEGIN / COMMIT / ROLLBACK)
 
-### II. Set-Based Query Operations
+### II. Combining Result Sets
 - [ ] UNION
 - [ ] UNION ALL
 - [ ] INTERSECT
 - [ ] EXCEPT
-- [ ] Set operation rules and column alignment
 
-### III. Advanced JOIN Operations
-- [ ] CROSS JOIN
-- [ ] FULL OUTER JOIN
-- [ ] Advanced OUTER JOIN scenarios
-- [ ] JOINs vs Subqueries (logical comparison)
-
-### IV. Window Functions (Analytical Queries)
+### III. Window Functions (Must-Have)
 - [ ] ROW_NUMBER
-- [ ] RANK
-- [ ] DENSE_RANK
-- [ ] NTILE
-- [ ] LAG
-- [ ] LEAD
-
-### V. Window Function Mechanics
-- [ ] OVER clause
+- [ ] RANK vs DENSE_RANK
+- [ ] LAG / LEAD
 - [ ] PARTITION BY
-- [ ] ORDER BY in windows
-- [ ] Frame specifications (ROWS / RANGE)
 
-### VI. String Functions
-- [ ] SUBSTRING
-- [ ] CHARINDEX
-- [ ] CONCAT
+### IV. Practical Functions
 - [ ] STRING_AGG
-- [ ] Practical string manipulation scenarios
-
-### VII. Date & Time Functions
 - [ ] DATEADD
 - [ ] DATEDIFF
-- [ ] FORMAT
-- [ ] Date range calculations
-- [ ] Time-based reporting patterns
+- [ ] CAST / CONVERT
+- [ ] ISNULL / COALESCE
 
-### VIII. Type Conversion & Conditional Logic
-- [ ] CAST
-- [ ] CONVERT
-- [ ] CASE expressions (advanced usage)
-- [ ] ISNULL
-- [ ] COALESCE
-- [ ] IIF
-
-### IX. Error Handling & Robust SQL
+### V. Error Handling
 - [ ] TRY / CATCH
-- [ ] Handling conversion errors
-- [ ] Transaction safety with errors
+- [ ] Transactions with error handling

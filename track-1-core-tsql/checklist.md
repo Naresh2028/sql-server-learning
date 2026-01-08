@@ -28,7 +28,7 @@
 ### VI. Query Composition
 - [ ] Subqueries (scalar, correlated, EXISTS)
 - [ ] Common Table Expressions (CTEs – non-recursive)  
-
+- [ ] Recursive CTE
 
 
 

@@ -45,7 +45,7 @@ A scalar subquery is one that returns exactly one value (one column and one row)
 ## Example
 Scenario: You want to list all products that are priced higher than the average product price in your warehouse.
 
-```SELECT ProductName, BasePrice
+SELECT ProductName, BasePrice
 FROM Products
 WHERE BasePrice > (SELECT AVG(BasePrice) FROM Products); 
 -- The inner query returns a single number (e.g., 500.00)
@@ -62,7 +62,7 @@ it runs once for every row processed by the outer query.
 ## Example
 Scenario: Find products that have a higher price than the average price within their own category.
 
-```SELECT p1.ProductName, p1.BasePrice, p1.CategoryID
+ SELECT p1.ProductName, p1.BasePrice, p1.CategoryID
 FROM Products p1
 WHERE p1.BasePrice > (
     SELECT AVG(p2.BasePrice) 

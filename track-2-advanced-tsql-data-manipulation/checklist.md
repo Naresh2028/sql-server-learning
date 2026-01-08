@@ -1,7 +1,7 @@
 ## Track 2 – Advanced T-SQL & Data Manipulation (Core Only)
 
 ### I. Data Modification
-- [ ] INSERT, UPDATE, and DELETE
+- [ ] INSERT, UPDATE,& DELETE
 - [ ] MERGE (basic understanding)
 - [ ] Transactions (BEGIN / COMMIT / ROLLBACK)
 

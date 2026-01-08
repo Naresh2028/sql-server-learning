@@ -82,13 +82,14 @@ It stops searching as soon as it finds the first match (making it very fast).
 ## Example
 Scenario: You are an admin in a Vancouver office. You need to find all Categories that actually have at least one Product in stock.
 
+```sql
 SELECT CategoryName
 FROM Categories c
 WHERE EXISTS (
-    SELECT 1 
-    FROM Products p 
-    WHERE p.CategoryID = c.CategoryID 
-    AND p.UnitsInStock > 0
+    SELECT 1
+    FROM Products p
+    WHERE p.CategoryID = c.CategoryID
+      AND p.UnitsInStock > 0
 );
 
 ## When to Use

@@ -22,8 +22,7 @@
 
 ### V. Aggregation Basics
 - [ ] Aggregate functions (COUNT, SUM, AVG, MIN, MAX)
-- [ ] GROUP BY
-- [ ] HAVING  
+- [ ] GROUP BY & HAVING  
 
 ### VI. Query Composition
 - [ ] Subqueries (scalar, correlated, EXISTS)

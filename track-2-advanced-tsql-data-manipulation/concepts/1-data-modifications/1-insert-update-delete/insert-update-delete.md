@@ -43,9 +43,6 @@ use a "Soft Delete" (an IsActive column) and an UPDATE instead of a hard DELETE.
 It allows your database to be Dynamic. Without these commands, a database would be a static, read-only list. 
 These allow your application to react to real-world changes.
 
-## Example
-Scenario: Managing a shipment in a warehouse.
-
 ## Common Misconceptions
 1. "DELETE resets Identity seeds": False. If you delete ID #10, the next insert will still be #11. Use TRUNCATE if you want to reset the counter.
 
@@ -53,6 +50,9 @@ Scenario: Managing a shipment in a warehouse.
 
 3. "Updates are safe": Without a WHERE clause, an UPDATE is a "database killer." Always run a SELECT with your WHERE clause first to verify which rows will be affected.
 
+
+## Example
+Scenario: Managing a shipment in a warehouse.
 ```sql
 -- 1. Add a new product
 INSERT INTO Inventory (ItemName, Warehouse_ID) VALUES ('Gaming Chair', 2);

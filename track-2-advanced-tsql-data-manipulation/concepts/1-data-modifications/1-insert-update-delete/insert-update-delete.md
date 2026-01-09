@@ -46,6 +46,7 @@ These allow your application to react to real-world changes.
 ## Example
 Scenario: Managing a shipment in a warehouse.
 
+```sql
 -- 1. Add a new product
 INSERT INTO Inventory (ItemName, Warehouse_ID) VALUES ('Gaming Chair', 2);
 

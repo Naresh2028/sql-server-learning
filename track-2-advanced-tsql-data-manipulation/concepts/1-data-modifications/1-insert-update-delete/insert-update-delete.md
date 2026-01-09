@@ -46,6 +46,13 @@ These allow your application to react to real-world changes.
 ## Example
 Scenario: Managing a shipment in a warehouse.
 
+## Common Misconceptions
+1. "DELETE resets Identity seeds": False. If you delete ID #10, the next insert will still be #11. Use TRUNCATE if you want to reset the counter.
+
+2. "INSERT is always fast": If a table has 20 indexes, every INSERT or DELETE forces the database to update all 20 index trees, which can slow down your .NET API.
+
+3. "Updates are safe": Without a WHERE clause, an UPDATE is a "database killer." Always run a SELECT with your WHERE clause first to verify which rows will be affected.
+
 ```sql
 -- 1. Add a new product
 INSERT INTO Inventory (ItemName, Warehouse_ID) VALUES ('Gaming Chair', 2);
@@ -55,10 +62,3 @@ UPDATE Inventory SET ItemName = 'Pro Gaming Chair' WHERE ItemName = 'Gaming Chai
 
 -- 3. Remove the item if it's sold out and discontinued
 DELETE FROM Inventory WHERE Item_ID = 50;
-
-## Common Misconceptions
-1. "DELETE resets Identity seeds": False. If you delete ID #10, the next insert will still be #11. Use TRUNCATE if you want to reset the counter.
-
-2. "INSERT is always fast": If a table has 20 indexes, every INSERT or DELETE forces the database to update all 20 index trees, which can slow down your .NET API.
-
-3. "Updates are safe": Without a WHERE clause, an UPDATE is a "database killer." Always run a SELECT with your WHERE clause first to verify which rows will be affected.

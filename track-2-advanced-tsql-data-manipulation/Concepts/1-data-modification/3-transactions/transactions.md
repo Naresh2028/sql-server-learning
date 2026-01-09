@@ -52,6 +52,8 @@ B. "SQL handles this automatically": Only for single statements. If you have two
 
 C. "COMMIT is optional": False. If you BEGIN but never COMMIT, the rows stay "locked," and no one else in your company can edit them until you close your connection!
 
+## Production Notes
+
 ## Example
 Scenario: A customer in California buys a MacBook. We must decrease stock AND record the sale.
 ```sql

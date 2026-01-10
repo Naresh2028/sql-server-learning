@@ -88,7 +88,7 @@ Without it:
 3. You can end up with half-open transactions
 
 📌 Best Practice Rule
-    In production stored procedures that use transactions → always use SET XACT_ABORT ON.
+    -> In production stored procedures that use transactions → always use SET XACT_ABORT ON.
 
 ### C. Isolation Levels (Awareness)
 Transactions do not run in a vacuum.

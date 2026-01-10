@@ -95,14 +95,11 @@ Transactions do not run in a vacuum.
 They interact with other transactions via isolation levels.
 
 Common ones:
-    A. READ COMMITTED (default)
-    Prevents dirty reads but allows blocking.
+A. READ COMMITTED (default) -> Prevents dirty reads but allows blocking.
 
-   B. READ COMMITTED SNAPSHOT (RCSI)
-    Uses row versions instead of locks → reduces blocking.
+B. READ COMMITTED SNAPSHOT (RCSI) -> Uses row versions instead of locks → reduces blocking.
 
-   SERIALIZABLE
-    Strongest isolation, most blocking, slow.
+SERIALIZABLE ->Strongest isolation, most blocking, slow.
 
 📌 Production Awareness Statement
     -> “Choosing the wrong isolation level can cause blocking, deadlocks, or stale reads.”

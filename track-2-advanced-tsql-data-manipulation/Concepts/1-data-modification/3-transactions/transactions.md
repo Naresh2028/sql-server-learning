@@ -75,8 +75,8 @@ Once COMMIT happens, data survives crashes.
 SQL Server writes changes to the transaction log (LDF) before confirming commit.
 
 ### B. SET XACT_ABORT ON (CRITICAL in Production)
-What it is
-Forces SQL Server to automatically rollback the transaction if any runtime error occurs.
+
+It Forces SQL Server to automatically rollback the transaction if any runtime error occurs.
 
 SET XACT_ABORT ON;
 Why it matters

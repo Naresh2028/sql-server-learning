@@ -88,7 +88,7 @@ Without it:
 3. You can end up with half-open transactions
 
 📌 Best Practice Rule
-In production stored procedures that use transactions → always use SET XACT_ABORT ON.
+    In production stored procedures that use transactions → always use SET XACT_ABORT ON.
 
 ### C. Isolation Levels (Awareness)
 Transactions do not run in a vacuum.
@@ -105,7 +105,7 @@ Common ones:
     Strongest isolation, most blocking, slow.
 
 📌 Production Awareness Statement
-“Choosing the wrong isolation level can cause blocking, deadlocks, or stale reads.”
+    “Choosing the wrong isolation level can cause blocking, deadlocks, or stale reads.”
 
 ### D. Long-Running Transactions = System Killers
 Bad transactions cause:
@@ -119,7 +119,7 @@ Log growth
 Angry teammates
 
 📌 Golden Rule
-Keep transactions short, fast, and deterministic.
+    Keep transactions short, fast, and deterministic.
 
 Never:
    Wait for user input

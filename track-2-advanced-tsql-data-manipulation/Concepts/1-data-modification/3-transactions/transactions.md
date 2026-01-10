@@ -52,7 +52,79 @@ B. "SQL handles this automatically": Only for single statements. If you have two
 
 C. "COMMIT is optional": False. If you BEGIN but never COMMIT, the rows stay "locked," and no one else in your company can edit them until you close your connection!
 
-## Production Notes
+## Production Notes / Important Awareness (Advanced)
+
+### A. ACID Properties (Why Transactions Exist)
+
+Every SQL Server transaction follows ACID:
+A – Atomicity
+All operations succeed or all fail.
+There is no partial success.
+
+C – Consistency
+Transactions move the database from one valid state to another.
+Example: Stock cannot go negative if constraints exist.
+
+I – Isolation
+Other transactions should not see half-finished work.
+One user should not see inventory deducted until the order is fully committed.
+Either both UPDATE + INSERT succeed, or neither exists.
+
+D – Durability
+Once COMMIT happens, data survives crashes.
+SQL Server writes changes to the transaction log (LDF) before confirming commit.
+
+### B. SET XACT_ABORT ON (CRITICAL in Production)
+What it is
+Forces SQL Server to automatically rollback the transaction if any runtime error occurs.
+
+SET XACT_ABORT ON;
+Why it matters
+Without it:
+Some errors rollback
+Some errors do not
+You can end up with half-open transactions
+
+📌 Best Practice Rule
+In production stored procedures that use transactions → always use SET XACT_ABORT ON.
+
+### C. Isolation Levels (Awareness)
+Transactions do not run in a vacuum.
+They interact with other transactions via isolation levels.
+
+Common ones:
+    A. READ COMMITTED (default)
+    Prevents dirty reads but allows blocking.
+
+   B. READ COMMITTED SNAPSHOT (RCSI)
+    Uses row versions instead of locks → reduces blocking.
+
+   SERIALIZABLE
+    Strongest isolation, most blocking, slow.
+
+📌 Production Awareness Statement
+“Choosing the wrong isolation level can cause blocking, deadlocks, or stale reads.”
+
+### D. Long-Running Transactions = System Killers
+Bad transactions cause:
+
+Blocking
+
+Deadlocks
+
+Log growth
+
+Angry teammates
+
+📌 Golden Rule
+Keep transactions short, fast, and deterministic.
+
+Never:
+   Wait for user input
+
+   Call external APIs
+
+   Do heavy reporting inside a transaction
 
 ## Example
 Scenario: A customer in California buys a MacBook. We must decrease stock AND record the sale.
@@ -78,3 +150,17 @@ BEGIN CATCH
     ROLLBACK TRANSACTION;
     PRINT 'Error occurred. Changes rolled back.';
 END CATCH
+
+---- Correct Production Pattern ----
+
+SET XACT_ABORT ON;
+BEGIN TRANSACTION;
+
+BEGIN TRY
+    -- business logic
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
+    THROW;
+END CATCH;

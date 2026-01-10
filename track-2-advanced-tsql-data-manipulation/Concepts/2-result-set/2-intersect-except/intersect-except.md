@@ -49,6 +49,8 @@ It solves the "Shared vs. Unique" data problem. It is much easier to write EXCEP
 ## Example
 Imagine we have two tables: Warehouse_A and Warehouse_B.
 
+```sql
+
 --- INTERSECT (Finding Overlap)
 "Which specific items do we have in stock at both locations?"
 

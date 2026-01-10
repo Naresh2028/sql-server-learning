@@ -40,16 +40,12 @@ B. Different Structures: If Table A has 5 columns and Table B has 3, you cannot 
 ## What Problem Does It Solve?
 It solves the problem of Segmented Data. Often, large companies split data into "Current" and "Historical" tables for performance. UNION allows you to query them as if they were one single table.
 
-## Common Misconceptions
+## Common Misconceptions / Important Awareness (Advanced)
 1. "UNION sorts the data": While UNION often sorts data to find duplicates, you should never rely on it. Always use an ORDER BY at the very end if you need a specific sequence.
 
 2. "They are interchangeable": They are not. Using UNION when you don't have duplicates is a waste of server resources.
-
-## Production Notes / Important Awareness (Advanced)
-
-- ORDER BY can be applied only once and must appear at the very end of the UNION query.
-- Parentheses are required when using UNION with subqueries.
-
+  
+3. Parentheses are required when using UNION with subqueries.
 
 ## Example
 --- Union

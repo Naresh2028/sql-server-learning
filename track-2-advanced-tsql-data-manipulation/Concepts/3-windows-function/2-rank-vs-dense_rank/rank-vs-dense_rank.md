@@ -1,5 +1,7 @@
 # RANK & DENSE_RANK
 
+---In T-SQL, RANK and DENSE_RANK are the "competitive" siblings of ROW_NUMBER
+
 ## What are RANK & DENSE_RANK?
 
 These are window functions used to assign a rank to each row within a partition.
@@ -11,9 +13,16 @@ These are window functions used to assign a rank to each row within a partition.
 ## Analogy
 Think of a Standard High School Race:
 
-A. RANK (The Olympic Way): Two people finish at the exact same time for 1st place. They both get Gold (1). The next person to cross the line gets Bronze (3) because two people are ahead of them. The #2 spot is skipped.
+    A. RANK (With Gaps):
+    Two runners finish at the exact same time and both receive Rank 1.
+    The next runner is assigned Rank 3 because two people are ranked ahead.
+    Rank 2 is skipped.
 
-B. DENSE_RANK (The "No Gaps" Way): Two people finish for 1st place. They both get #1. The next person to cross the line is simply the next "rank" of person, so they get #2.
+    B. DENSE_RANK (No Gaps):
+    Two runners finish at the same time and both receive Rank 1.
+    The next runner is assigned Rank 2.
+    No rank numbers are skipped.
+
 
 ## Syntax
     SELECT 
@@ -38,13 +47,16 @@ C. Academic Grading: Determining class standings where multiple students have th
 
 ## What Problem Does It Solve?
 
-1. Pagination: Never use these for pagination because you might get multiple "Page 1s" if there are ties, which will break your Angular logic. Use ROW_NUMBER for that.
+1. It solves the problem of ranking data fairly when ties exist.
+ 
+2. In many real-world scenarios (scores, prices, performance metrics), multiple rows can have the same value.
 
-2. Unique Row Identification: If you need a unique number for every row, these will fail you because they assign the same number to ties.
+3. RANK and DENSE_RANK allow those rows to share the same position instead of forcing an artificial unique order.
 
 ## Common Misconceptions / Important Notes
 
-1. Memory Usage: Both are slightly more "expensive" than ROW_NUMBER because the database has to look at the value of the previous row to decide if the current row is a "tie."
+1. Performance Cost:
+RANK and DENSE_RANK can be slightly more expensive than ROW_NUMBER because the database must evaluate ties while computing the window function. This usually involves additional sorting or comparison work during query execution.
 
 2. Partitioning: Just like ROW_NUMBER, you can use PARTITION BY with these to find the top performers per department or per region.
 

@@ -94,7 +94,6 @@ Without it:
 Transactions do not run in a vacuum.
 They interact with other transactions via isolation levels.
 
-Common ones:
 A. READ COMMITTED (default) -> Prevents dirty reads but allows blocking.
 
 B. READ COMMITTED SNAPSHOT (RCSI) -> Uses row versions instead of locks → reduces blocking.

@@ -45,7 +45,7 @@ It solves the problem of Segmented Data. Often, large companies split data into 
 
 2. "They are interchangeable": They are not. Using UNION when you don't have duplicates is a waste of server resources.
 
-## Important Rules
+## Production Notes / Important Awareness (Advanced)
 
 - ORDER BY can be applied only once and must appear at the very end of the UNION query.
 - Parentheses are required when using UNION with subqueries.

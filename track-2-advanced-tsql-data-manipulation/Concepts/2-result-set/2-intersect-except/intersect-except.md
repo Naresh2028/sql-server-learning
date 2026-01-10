@@ -17,15 +17,15 @@ Think of two Contact Lists (Friend A and Friend B).
 ## Syntax
 -- INTERSECT
 
-  1. SELECT ColumnA FROM Table1
-  INTERSECT
-  SELECT ColumnA FROM Table2;
+    1. SELECT ColumnA FROM Table1    
+    INTERSECT
+    SELECT ColumnA FROM Table2;
 
 -- EXCEPT
 
-  2. SELECT ColumnA FROM Table1
-  EXCEPT
-  SELECT ColumnA FROM Table2;
+    2. SELECT ColumnA FROM Table1
+    EXCEPT
+    SELECT ColumnA FROM Table2;
 
 ## When to Use
 

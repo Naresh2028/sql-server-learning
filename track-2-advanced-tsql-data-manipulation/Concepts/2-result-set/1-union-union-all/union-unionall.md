@@ -9,9 +9,9 @@ B. UNION ALL: Combines rows and keeps everything, including duplicates.
 
 ## Analogy
 Think of Two Decks of Cards.
-A. UNION: You take the two decks, put them together, but if you find two "Aces of Spades," you throw one away so you only have unique cards.
+1. UNION: You take the two decks, put them together, but if you find two "Aces of Spades," you throw one away so you only have unique cards.
 
-B. UNION ALL: You just stack one deck on top of the other. If you have two "Aces of Spades," you keep both. It’s faster because you don't stop to look for duplicates.
+2. UNION ALL: You just stack one deck on top of the other. If you have two "Aces of Spades," you keep both. It’s faster because you don't stop to look for duplicates.
 
 ## Syntax
 SELECT ColumnA, ColumnB FROM Table1

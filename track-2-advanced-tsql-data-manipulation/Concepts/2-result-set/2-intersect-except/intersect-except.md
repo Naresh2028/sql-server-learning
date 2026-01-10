@@ -66,10 +66,3 @@ SELECT ItemName FROM Warehouse_A
 EXCEPT
 SELECT ItemName FROM Warehouse_B;
 -- Returns items that are ONLY in Warehouse A.
-
-
-
-
-
-
-

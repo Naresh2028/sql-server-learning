@@ -45,25 +45,11 @@ It solves the problem of Segmented Data. Often, large companies split data into 
 
 2. "They are interchangeable": They are not. Using UNION when you don't have duplicates is a waste of server resources.
 
-## Union
+## Important Rules
 
-## What is Union
-It performs a "Distinct" operation on the combined results. It is essentially a UNION ALL followed by a DISTINCT filter.
+- ORDER BY can be applied only once and must appear at the very end of the UNION query.
+- Parentheses are required when using UNION with subqueries.
 
-## Production Notes / Important Awareness (Advanced)
-A. Performance Hit: Because the database must compare every row to find duplicates, UNION is significantly slower and more memory-intensive than UNION ALL.
-
-B. Data Types: Be careful with Large Object (LOB) types like TEXT or NVARCHAR(MAX), as SQL Server may struggle to compare them for uniqueness.
-
-## Union All
-
-## What is Union ALL
-It is a "Blind Append." It takes the results of Query A and sticks Query B underneath it without checking anything.
-
-## Production Notes / Important Awareness (Advanced)
-A. Efficiency: This is the preferred method for high-performance applications (like those in Silicon Valley) unless you are 100% sure you need to hide duplicates.
-
-B. Minimal Logging: In some scenarios, UNION ALL can be optimized better by the query engine because it doesn't require a "Sort" or "Hash" operation.
 
 ## Example
 --- Union
@@ -73,7 +59,7 @@ Imagine you want a list of all unique cities where we have either a Warehouse OR
 Imagine you need to count every single "Contact Point" in North America for an audit.
 
 ```sql
---- Union All
+--- Union
 SELECT City FROM Warehouses -- Toronto, Vancouver, San Francisco
 UNION
 SELECT City FROM Suppliers;  -- Toronto, Seattle

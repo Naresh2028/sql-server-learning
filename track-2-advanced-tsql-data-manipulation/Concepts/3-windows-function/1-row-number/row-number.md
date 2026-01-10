@@ -2,7 +2,7 @@
 
 ## What is ROW_NUMBER?
 
-1. ROW_NUMBER is a temporary ranking function that assigns a unique, sequential integer to each row in a result set. The numbering starts at 1 for the first row in every "window" or partition.
+1. ROW_NUMBER is a window function that assigns a unique, sequential integer to each row within a result set, based on the ORDER BY clause, starting at 1 for each partition (if specified).
 
 2. Unlike IDENTITY columns, ROW_NUMBER is calculated at runtime based on how you sort the data in the query, not how it's stored on the disk.
 

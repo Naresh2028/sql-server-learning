@@ -81,9 +81,11 @@ Forces SQL Server to automatically rollback the transaction if any runtime error
 SET XACT_ABORT ON;
 Why it matters
 Without it:
-Some errors rollback
-Some errors do not
-You can end up with half-open transactions
+1. Some errors rollback
+
+2. Some errors do not
+
+3. You can end up with half-open transactions
 
 📌 Best Practice Rule
 In production stored procedures that use transactions → always use SET XACT_ABORT ON.

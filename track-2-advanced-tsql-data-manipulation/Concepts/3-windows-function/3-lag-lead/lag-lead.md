@@ -55,7 +55,7 @@ ORDER BY → mandatory – defines the sequence
 2. Complex Dependencies: If you need to look back based on a complex logic (like "the last row where Status was 'Paid'"), a Correlated Subquery or CROSS APPLY might be more appropriate.
 
 ## What Problem Does It Solve?
-It solves the "Inter-row Comparison" problem. Traditionally, to compare a row to the one before it, you had to perform a Self-JOIN, which is computationally expensive ($O(n^2)$ complexity in many cases) and hard to read. LAG/LEAD perform this in a single pass over the data ($O(n \log n)$ due to sorting).
+It solves the "Inter-row Comparison" problem. Traditionally, to compare a row to the one before it, you had to perform a Self-JOINs can be harder to read and may be less efficient than window functions, depending on data size, indexes, and execution plan. and hard to read. LAG/LEAD perform this in a single pass over the data ($O(n \log n)$ due to sorting).
 
 ## Common Misconceptions / Important Notes
 

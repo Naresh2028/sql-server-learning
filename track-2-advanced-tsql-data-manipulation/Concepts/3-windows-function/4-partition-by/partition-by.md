@@ -33,16 +33,12 @@ The numbering restarts for each country, instead of continuing globally.
 That’s exactly what PARTITION BY Country does — it resets the ranking inside each group.
 
 ## Syntax
-    
-    SELECT 
-    Category,
-    ProductName,
-    Price,
+
     ROW_NUMBER() OVER (
-        PARTITION BY Category   -- The "Reset" button
-        ORDER BY Price DESC      -- The "Sequence" logic
+    PARTITION BY Category        -- resets per category
+    ORDER BY Price DESC          -- mandatory for ranking
     ) AS RankInCategory
-    FROM Products;
+
 
 ## When to Use
 
@@ -56,7 +52,7 @@ Comparative Reporting: Showing an employee's salary right next to the Average Sa
 
 ## When NOT to Use
 
-Grand Totals: If you need a calculation across the entire table (e.g., total company revenue), don't partition; just use OVER(ORDER BY...).
+Grand Totals: If you need a calculation across the entire table (e.g., total company revenue), don't partition; use a window aggregate without PARTITION BY (e.g., SUM(...) OVER())
 
 Simple Grouping: If you don't need to see the individual rows (e.g., just a list of Categories and their Sums), a standard GROUP BY is faster and more readable.
 

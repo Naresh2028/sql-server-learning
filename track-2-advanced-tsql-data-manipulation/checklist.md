@@ -1,9 +1,9 @@
 ## Track 2 – Advanced T-SQL & Data Manipulation (Core Only)
 
 ### I. Data Modification
-- [ ] INSERT, UPDATE,& DELETE
+- [ ] INSERT, UPDATE, & DELETE
 - [ ] MERGE (basic understanding)
-- [ ] Transactions (BEGIN / COMMIT / ROLLBACK)
+- [ ] Transactions (BEGIN, COMMIT, & ROLLBACK)
 
 ### II. Combining Result Sets
 - [ ] UNION
@@ -14,7 +14,7 @@
 ### III. Window Functions (Must-Have)
 - [ ] ROW_NUMBER
 - [ ] RANK vs DENSE_RANK
-- [ ] LAG / LEAD
+- [ ] LAG & LEAD
 - [ ] PARTITION BY
 
 ### IV. Practical Functions
@@ -22,8 +22,8 @@
 - [ ] DATEADD
 - [ ] DATEDIFF
 - [ ] CAST & CONVERT
-- [ ] ISNULL / COALESCE
+- [ ] ISNULL & COALESCE
 
 ### V. Error Handling
-- [ ] TRY / CATCH
+- [ ] TRY, CATCH
 - [ ] Transactions with error handling

@@ -21,7 +21,7 @@
 - [ ] STRING_AGG
 - [ ] DATEADD
 - [ ] DATEDIFF
-- [ ] CAST / CONVERT
+- [ ] CAST & CONVERT
 - [ ] ISNULL / COALESCE
 
 ### V. Error Handling

@@ -22,7 +22,6 @@
 - [ ] DATEADD
 - [ ] DATEDIFF
 - [ ] CAST & CONVERT
-- [ ] ISNULL & COALESCE
 
 ### V. Error Handling
 - [ ] TRY, CATCH

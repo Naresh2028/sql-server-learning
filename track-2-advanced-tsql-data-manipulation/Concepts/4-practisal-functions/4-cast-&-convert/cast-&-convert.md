@@ -46,11 +46,24 @@ CONVERT: Solves the Formatting Problem. It allows the database to handle the vis
 
 ## Common Misconceptions / Important Notes
 
-Truncation: If you CAST a long string NVARCHAR(100) to a short one NVARCHAR(5), SQL will cut off the end of your data without warning you.
+Truncation:
+When using CAST/CONVERT in a SELECT, SQL Server may silently truncate data.
+However, during INSERT or UPDATE operations, truncation usually raises an error.
 
 Performance: There is no significant performance difference between the two. The choice is purely about "Portability" (CAST) vs. "Formatting" (CONVERT).
 
 Try_Cast / Try_Convert: In modern SQL, use these variants if you aren't sure the data can be converted. They return NULL instead of crashing the whole query if a conversion fails.
+
+SARGability:
+Avoid applying CAST or CONVERT on indexed columns inside WHERE clauses.
+
+    Example (bad):
+        WHERE CAST(OrderDate AS DATE) = '2026-01-01'
+
+    Better:
+    WHERE OrderDate >= '2026-01-01'
+    AND OrderDate <  '2026-01-02'
+
 
 ## Example: CAST
 

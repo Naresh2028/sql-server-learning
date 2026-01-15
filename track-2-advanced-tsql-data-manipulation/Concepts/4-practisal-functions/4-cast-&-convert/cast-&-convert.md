@@ -65,7 +65,9 @@ Avoid applying CAST or CONVERT on indexed columns inside WHERE clauses.
     AND OrderDate <  '2026-01-02'
 
 
-## Example: CAST
+## Example
+
+Example: CAST
 
 Scenario: You have a decimal price and you want to concatenate it with a string for a simple label.
 

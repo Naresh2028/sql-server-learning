@@ -10,7 +10,7 @@ It is important to remember that it counts boundary crossings, not necessarily 2
 
 ## Analogy
 
-Think of a Trip Odometer or a Measuring Tape. If you are driving from Point A to Point B, you don't care how fast you went; you just want to know how many miles passed. DATEDIFF looks at the start and end and tells you exactly how many units (days, hours, years) are between them.
+Think of a Trip Odometer or a Measuring Tape. If you are driving from Point A to Point B, you don't care how fast you went; you just want to know how many miles passed. DATEDIFF looks at how many unit boundaries were crossed between the start and end.
 
 ## Syntax
 
@@ -64,4 +64,4 @@ SELECT
     ShippedDate,
     DATEDIFF(day, OrderDate, ShippedDate) AS DaysToShip
 FROM Orders
-WHERE DATEDIFF(day, OrderDate, ShippedDate) > 3;
+WHERE ShippedDate >= DATEADD(day, 4, OrderDate);

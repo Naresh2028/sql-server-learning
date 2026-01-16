@@ -62,9 +62,10 @@ SELECT
     OrderID,
     OrderDate,
     ShippedDate,
-    (DATEDIFF(year, BirthDate, GETDATE()) - 
-     CASE WHEN (MONTH(BirthDate) > MONTH(GETDATE())) 
-            OR (MONTH(BirthDate) = MONTH(GETDATE()) AND DAY(BirthDate) > DAY(GETDATE())) 
-          THEN 1 ELSE 0 END) AS AccurateAge
-FROM Orders
-WHERE ShippedDate >= DATEADD(day, 4, OrderDate);
+    DATEDIFF(day, OrderDate, ShippedDate) AS DaysToShip,
+    CASE 
+        WHEN DATEDIFF(day, OrderDate, ShippedDate) > 3 THEN '⚠ Delayed'
+        ELSE 'On Time'
+    END AS ShippingStatus
+FROM Orders;
+

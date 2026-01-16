@@ -46,17 +46,6 @@ Readability: It turns raw, technical data into business-friendly information.
 
 Ambiguity: When joining two tables that both have a column named ID, aliases help distinguish between UserID and AccountID.
 
-## Example
-SELECT 
-    p.ProductName AS ItemName,                               -- Simple Alias
-    p.BasePrice,
-    p.UnitsInStock AS InventoryCount,                        -- Clarity Alias
-    (p.BasePrice * p.UnitsInStock) AS GrossInventoryValue,    -- Math Expression
-    (p.BasePrice * c.RegionTaxRate) AS EstimatedTaxPerUnit,   -- Cross-table Expression
-    (p.BasePrice + (p.BasePrice * c.RegionTaxRate)) AS FinalConsumerPrice -- Complex Expression
-FROM Products p
-JOIN Categories c ON p.CategoryID = c.CategoryID;
-
 
 ## Common Misconceptions
 A. "Aliases rename the table columns": No. It is strictly a "display name" for that specific query execution.
@@ -64,3 +53,13 @@ A. "Aliases rename the table columns": No. It is strictly a "display name" for t
 B. "Using AS slows down the query": No. Aliases are handled during the parsing phase.
 
 
+## Example
+    SELECT 
+    p.ProductName AS ItemName,                               -- Simple Alias
+    p.BasePrice,
+    p.UnitsInStock AS InventoryCount,                        -- Clarity Alias
+    (p.BasePrice * p.UnitsInStock) AS GrossInventoryValue,    -- Math Expression
+    (p.BasePrice * c.RegionTaxRate) AS EstimatedTaxPerUnit,   -- Cross-table Expression
+    (p.BasePrice + (p.BasePrice * c.RegionTaxRate)) AS FinalConsumerPrice -- Complex Expression
+    FROM Products p
+    JOIN Categories c ON p.CategoryID = c.CategoryID;

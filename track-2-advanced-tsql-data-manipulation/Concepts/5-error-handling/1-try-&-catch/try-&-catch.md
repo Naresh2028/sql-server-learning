@@ -15,7 +15,7 @@ CATCH block: If an error occurs in the TRY block, execution immediately jumps to
 Think of an Acrobat and a Safety Net. The acrobat performing the stunt is the TRY block. As long as everything goes well, the acrobat finishes the show and leaves. The CATCH block is the safety net below. The safety net does nothing while the acrobat is successful; it only "activates" if the acrobat falls (an error occurs), catching them and preventing a total disaster.
 
 ## Syntax
-
+    
     BEGIN TRY
     -- Statements that might cause an error
     INSERT INTO Orders (OrderID, Total) VALUES (1, 100);

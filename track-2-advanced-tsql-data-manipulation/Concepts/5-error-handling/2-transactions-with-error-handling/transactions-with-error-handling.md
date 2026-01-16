@@ -14,6 +14,8 @@ The Error Handling: If the delivery truck crashes and breaks the vase (Error), t
 
 ## Syntax
 
+    SET XACT_ABORT ON;
+    
     BEGIN TRY
     BEGIN TRANSACTION;
 
@@ -53,7 +55,7 @@ It solves the "Inconsistent State" problem. Without this, if your code crashes a
 
 @@TRANCOUNT: This is a global variable that tracks how many active transactions your current session has. Using it in the CATCH block is a "Pro" move to ensure you don't try to ROLLBACK a transaction that never actually started.
 
-Deadlocks: TRY...CATCH allows SQL Server to detect and report deadlocks. Retry logic should be implemented in the application layer (e.g., .NET).
+Deadlocks: Even correct SQL can fail due to a deadlock. TRY...CATCH allows SQL Server to detect and report the error. Retry logic must be implemented in the application layer (e.g., .NET).
 
 Implicit vs Explicit: By default, SQL Server treats every single statement as a transaction. We use BEGIN TRANSACTION to make it Explicit, grouping multiple statements together.
 

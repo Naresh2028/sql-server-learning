@@ -38,17 +38,6 @@ Without SELECT, a database would be a "black box." SELECT enables safe data acce
 
 It also enables Data Minimization, ensuring that an application only pulls the 2KB of data it needs rather than the 2GB available in the table.
 
-## Example
-SELECT 
-    OrderID, 
-    OrderDate,
-    TotalAmount,
-    (TotalAmount * 0.13) AS HST_Tax, -- 13% Ontario HST calculation
-    'CAD' AS Currency
-FROM Sales
-WHERE Status = 'Shipped'
-ORDER BY OrderDate DESC;
-
 ## Common Misconceptions
 A. SELECT is the first thing the database processes: False. 
 
@@ -69,3 +58,14 @@ By default, a SELECT statement places Shared (S) Locks on rows or pages.
 If a long-running UPDATE is happening, your SELECT might be blocked unless you use isolation levels like READ COMMITTED SNAPSHOT.
 
 
+
+## Example
+    SELECT 
+    OrderID, 
+    OrderDate,
+    TotalAmount,
+    (TotalAmount * 0.13) AS HST_Tax, -- 13% Ontario HST calculation
+    'CAD' AS Currency
+    FROM Sales
+    WHERE Status = 'Shipped'
+    ORDER BY OrderDate DESC;

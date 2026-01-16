@@ -1,6 +1,6 @@
-# recursive-cte
+# RECURSIVE CTE
 
-## What is recursive-cte?
+## What is RECURSIVE-CTE?
 A Recursive CTE is a CTE that references itself. It allows you to loop through data that has a parent-child relationship 
 until a specific condition is met.
 

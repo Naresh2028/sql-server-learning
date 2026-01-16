@@ -18,7 +18,6 @@
 ### IV. Combining Data from Multiple Tables
 - [ ] JOINs (INNER, LEFT, RIGHT, FULL OUTER, CROSS)
 - [ ] Table aliases
-- [ ] Join logic and correctness  
 
 ### V. Aggregation Basics
 - [ ] Aggregate functions (COUNT, SUM, AVG, MIN, MAX)

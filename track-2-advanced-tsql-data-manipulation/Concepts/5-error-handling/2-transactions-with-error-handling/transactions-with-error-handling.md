@@ -53,7 +53,7 @@ It solves the "Inconsistent State" problem. Without this, if your code crashes a
 
 @@TRANCOUNT: This is a global variable that tracks how many active transactions your current session has. Using it in the CATCH block is a "Pro" move to ensure you don't try to ROLLBACK a transaction that never actually started.
 
-Deadlocks: Even perfect code can fail due to a "Deadlock" (two users fighting for the same row). TRY...CATCH allows your .NET code to detect this and automatically "Retry" the transaction.
+Deadlocks: TRY...CATCH allows SQL Server to detect and report deadlocks. Retry logic should be implemented in the application layer (e.g., .NET).
 
 Implicit vs Explicit: By default, SQL Server treats every single statement as a transaction. We use BEGIN TRANSACTION to make it Explicit, grouping multiple statements together.
 
@@ -63,11 +63,13 @@ Scenario: A customer is purchasing a digital course. We need to deduct the balan
 
 ```sql
 
+SET XACT_ABORT ON;
+
 BEGIN TRY
     BEGIN TRANSACTION;
 
     -- 1. Deduct $50 from User Wallet
-    UPDATE Wallets 
+    UPDATE Wallets WITH (UPDLOCK, ROWLOCK)
     SET Balance = Balance - 50 
     WHERE UserID = 101 AND Balance >= 50;
 

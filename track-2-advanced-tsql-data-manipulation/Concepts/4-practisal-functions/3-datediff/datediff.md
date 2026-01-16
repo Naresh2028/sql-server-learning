@@ -62,6 +62,9 @@ SELECT
     OrderID,
     OrderDate,
     ShippedDate,
-    DATEDIFF(day, OrderDate, ShippedDate) AS DaysToShip
+    (DATEDIFF(year, BirthDate, GETDATE()) - 
+     CASE WHEN (MONTH(BirthDate) > MONTH(GETDATE())) 
+            OR (MONTH(BirthDate) = MONTH(GETDATE()) AND DAY(BirthDate) > DAY(GETDATE())) 
+          THEN 1 ELSE 0 END) AS AccurateAge
 FROM Orders
 WHERE ShippedDate >= DATEADD(day, 4, OrderDate);

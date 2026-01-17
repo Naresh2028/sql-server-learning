@@ -1,9 +1,9 @@
 # TABLE DESIGN
 
-## What Table design?
-Table design (or Data Modeling) is the process of defining the structure of your database. It involves identifying what
-data needs to be stored, how it is categorized into columns, and how it relates to other tables. It is the "blueprint" of 
-your application's data.
+## What is Table Design?
+Table design is the process of defining the physical structure of tables in a database.
+It is the implementation phase of data modeling, where entities, columns, data types,
+and relationships are translated into actual SQL tables.
 
 ## Analogy
 
@@ -23,12 +23,12 @@ you’ll never find anything. Table design is the art of deciding which drawer a
 Creating a table involves defining the name, the columns, and their data types.
 
     CREATE TABLE Users (
-    UserId INT PRIMARY KEY IDENTITY(1,1), -- Identity handles auto-increment
+    UserId INT IDENTITY(1,1) PRIMARY KEY,
     FirstName NVARCHAR(50) NOT NULL,
     LastName NVARCHAR(50) NOT NULL,
-    Email VARCHAR(255) UNIQUE,
+    Email NVARCHAR(255) NOT NULL UNIQUE,
     DateOfBirth DATE,
-    CreatedAt DATETIME DEFAULT GETDATE()
+    CreatedAt DATETIME2 DEFAULT SYSDATETIME()
     );
   
 ## When to Use
@@ -47,7 +47,8 @@ Temporary Logs: If you are logging millions of lines of "temp" data that you’l
 
 ## What Problem Does It Solve?
 
-Data Redundancy: Prevents you from writing the same customer name 500 times (via Normalization).
+Data Redundancy: Prevents repeated data storage by applying normalization
+(1NF, 2NF, 3NF) principles.
 
 Data Integrity: Ensures you can't accidentally put a "Name" in a "Price" column.
 
@@ -57,7 +58,10 @@ Search Performance: A well-designed table allows the database engine to find spe
 
 "One Big Table is Easier": Beginners often put everything in one table. This leads to "Update Anomalies" (e.g., if a user changes their name, you have to update 1,000 order rows).
 
-NULLs are Free: Many developers make every column NULLable. This leads to bugs in your .NET code. If a value must exist, use NOT NULL.
+NULLs are not free: Excessive NULLable columns complicate query logic,
+index usage, and application-level validation. Use NOT NULL when a value
+is logically mandatory.
+
 
 Plural vs. Singular: There is a long debate, but consistency is key. (e.g., naming tables Users vs User). Most .NET developers prefer Users (plural) to match the DbSet<User> in EF Core.
 
@@ -65,10 +69,8 @@ Plural vs. Singular: There is a long debate, but consistency is key. (e.g., nami
 
 E-Commerce Scenario : Instead of one "Sales" table, we split it to maintain integrity
 
-```sql
-
-| Table      | Purpose                     | Key Columns                          |
-|------------|-----------------------------|--------------------------------------|
-| Products   | Store catalog info          | ProductId, Name, Price               |
-| Orders     | Store transaction header    | OrderId, OrderDate, CustomerId       |
-| OrderItems | Store specific items in an order | OrderItemId, OrderId, ProductId, Qty |
+| Table      | Purpose                          | Key Columns                          |
+|------------|----------------------------------|--------------------------------------|
+| Products   | Store catalog info               | ProductId, Name, Price               |
+| Orders     | Store transaction header         | OrderId, OrderDate, CustomerId       |
+| OrderItems | Store order line items           | OrderItemId, OrderId, ProductId, Qty |

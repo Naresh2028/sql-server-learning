@@ -1,10 +1,11 @@
 # track-3 database objects & performance
 
-## Table Design & Integraity
+## Table Design & Integrity
+
 - [x] Table design
 - [ ] constraints (PRIMARY KEY, FOREIGN KEY, UNIQUE, CHECK, DEFAULT)
 - [ ] identity columns
-- [ ] data types (int, bigint, smallint, tinyint, bit, varchar(x), nvarchar(x), char(x), text, money, date, decimal(p,s), bit, date )
+- [ ] data types (int, bigint, smallint, tinyint, bit, varchar(x), nvarchar(x), char(x), decimal(p,s), money, date)
 
 ## Indexes & Performance Basics
 - [ ] Indexes (clustered vs non-clustered)

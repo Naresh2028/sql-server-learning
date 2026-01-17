@@ -79,7 +79,7 @@ Performance: Constraints actually help the database engine. For example, the que
 
 GitHub Tip: When pushing your SQL scripts to GitHub, always include your Constraint names (e.g., CONSTRAINT PK_User...) rather than letting the system auto-generate them. This makes your migrations predictable across different environments.
 
-## PRIMARY KEY
+## 1. PRIMARY KEY
 
 ## What it is
 
@@ -99,7 +99,7 @@ In every table: As a standard rule, every table should have one Primary Key to a
 
 Relationships: Use it when you need to "link" this table to another table.
 
-## FOREGIN KEY
+## 2. FOREGIN KEY
 
 ## What it is
 
@@ -122,7 +122,7 @@ Parent-Child relationships: When one entity "belongs to" or "is associated with"
 
 Data Consistency: Use it to prevent "orphan records" (e.g., deleting a Product while it is still being used in an active Order).
 
-## UNIQUE
+## 3. UNIQUE
 
 ## What it is
 
@@ -142,7 +142,7 @@ Secondary Identifiers: For data that isn't the "ID" but still must be one-of-a-k
 
 Alternate Keys: When you want to ensure no duplicates exist without making the column the main relationship key.
 
-## CHECK
+## 4. CHECK
 
 ## What it is
 
@@ -165,7 +165,7 @@ the database rejects the data.
 
 2. Safety Net: To prevent "impossible" data from entering the database due to bugs in the application-project.
 
-## DEFAULT
+## 5. DEFAULT
 
 ## What it is
 

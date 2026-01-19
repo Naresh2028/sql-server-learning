@@ -8,9 +8,9 @@
 - [ ] data types (int, bigint, smallint, tinyint, bit, varchar(x), nvarchar(x), char(x), decimal(p,s), money, date)
 
 ## Indexes & Performance Basics
-- [ ] Indexes (clustered vs non-clustered)
-- [ ] index strategies
-- [ ] execution plans, statistics, query optimization
+- [ ] Indexes
+- [ ] clustered
+- [ ] non-clustered
 
 ## Database Objects
 - [ ] Views

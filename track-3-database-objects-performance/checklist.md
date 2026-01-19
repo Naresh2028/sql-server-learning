@@ -7,7 +7,7 @@
 - [ ] identity columns
 - [ ] data types (int, bigint, smallint, tinyint, bit, varchar(x), nvarchar(x), char(x), decimal(p,s), money, date)
 
-## Indexes & Performance Basics
+## Indexes
 - [ ] Indexes 
 - [ ] non-clustered
 - [ ] clustered

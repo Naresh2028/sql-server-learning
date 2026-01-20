@@ -46,9 +46,10 @@ The most common join. It returns records only when there is a match in both tabl
 or a Category has no Products, those rows are ignored.
 
 ## EXAMPLE
-SELECT p.ProductName, c.CategoryName
-FROM Products p
-INNER JOIN Categories c ON p.CategoryID = c.CategoryID;
+
+    SELECT p.ProductName, c.CategoryName
+    FROM Products p
+    INNER JOIN Categories c ON p.CategoryID = c.CategoryID;
 
 ## WHEN TO USE
 Use this for "Required" relationships—like showing orders that definitely belong to a customer.
@@ -61,9 +62,10 @@ Returns all records from the left table, and the matched records from the right 
 
 ## EXAMPLE
 -- Show ALL products, even if they don't have a category assigned
-SELECT p.ProductName, c.CategoryName
-FROM Products p
-LEFT JOIN Categories c ON p.CategoryID = c.CategoryID;
+
+    SELECT p.ProductName, c.CategoryName
+    FROM Products p
+    LEFT JOIN Categories c ON p.CategoryID = c.CategoryID;
 
 ## WHEN TO USE
 Use this when the relationship is "Optional." For example, showing a list of all Employees and their Office Number 
@@ -77,9 +79,10 @@ The exact opposite of a LEFT JOIN. It returns all records from the right table a
 
 ## EXAMPLE
 -- Show ALL categories, even those that have zero products
-SELECT p.ProductName, c.CategoryName
-FROM Products p
-RIGHT JOIN Categories c ON p.CategoryID = c.CategoryID;
+
+    SELECT p.ProductName, c.CategoryName
+    FROM Products p
+    RIGHT JOIN Categories c ON p.CategoryID = c.CategoryID;
 
 ## WHEN TO USE
 Rarely used in practice, as most developers find it easier to read a LEFT JOIN by just swapping the table order. 
@@ -93,9 +96,10 @@ Returns all records when there is a match in either the left or the right table.
 
 ## EXAMPLE
 -- Show all products AND all categories, regardless of whether they link
-SELECT p.ProductName, c.CategoryName
-FROM Products p
-FULL OUTER JOIN Categories c ON p.CategoryID = c.CategoryID;
+    
+    SELECT p.ProductName, c.CategoryName
+    FROM Products p
+    FULL OUTER JOIN Categories c ON p.CategoryID = c.CategoryID;
 
 ## WHEN TO USE
 Use this for Data Auditing. It helps you find "orphaned" data—products without categories AND categories without products at the same time.

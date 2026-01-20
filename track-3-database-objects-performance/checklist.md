@@ -24,5 +24,5 @@
 - [ ] dynamic SQL
 
 ## Concurrency, Isolation, & Deadlocks
-- [ ] Locking & blocking & deadlocks
-- [ ] Isolation levels
+- [ ] Locking & blocking
+- [ ] deadlocks & Isolation levels

@@ -87,54 +87,156 @@ Fixed Length: If storing a 2-character State Code (CA, NY, ON), use CHAR(2) inst
 
 ## What it is
 
-NVARCHAR stands for National Variable Character. It stores Unicode data. It uses 2 bytes per character instead of 
-1. This allows it to store characters from any language in the world (Chinese, Arabic, Emojis 🚀).
+NVARCHAR stands for National Variable Character.
+
+National: It uses the Unicode standard (UCS-2 or UTF-16), meaning it can store characters from virtually any written language in the world, plus symbols and emojis.
+
+Variable: It uses only as much storage space as the data requires, plus 2 bytes for the length information.
+
+Storage Cost: It consumes 2 bytes per character. This is double the space of VARCHAR (which uses 1 byte).
 
 ## Example
 
+Scenario: Storing a user's display name that might include emojis or accents.
 
+    CREATE TABLE UserProfiles (
+    DisplayName NVARCHAR(100)
+    );
+
+    INSERT INTO UserProfiles VALUES (N'José 🚀'); 
+    
+'J', 'o', 's', 'é', ' ', '🚀' 
+
+Uses approx 12-14 bytes depending on the exact surrogate pair for the emoji.
+
+Note the 'N' prefix (N'String') which tells SQL this is Unicode!
 
 ## When to Use
+
+Internationalization: If your application is available in Canada (English/French) or California (English/Spanish/Asian languages), this is mandatory for names, addresses, and comments.
+
+User Input: Any field where a user types free text. You cannot predict if they will copy-paste a symbol or accent.
+
+Modern Default: In .NET Core development, string maps to NVARCHAR by default in Entity Framework because memory is cheap, but data corruption (seeing ??? instead of text) is expensive to fix.
 
 # INT
 
 ## What it is
 
+INT (Integer) is a standard 4-byte whole number.
+
+Range: -2,147,483,648 to 2,147,483,647.
+
+Storage: Always occupies exactly 4 bytes, regardless of whether the value is 1 or 2,000,000.
+
 ## Example
 
+Scenario: Storing a primary key ID or a quantity count.
+    
+    CREATE TABLE OrderLines (
+    OrderLineID INT IDENTITY(1,1), -- Standard Primary Key
+    Quantity INT
+    );
+
+    INSERT INTO OrderLines (Quantity) VALUES (500);
+
 ## When to Use
+
+Primary Keys: It is the most common data type for IDs because 4 bytes is very small, making indexes fast and compact.
+
+Counts: Items in stock, number of views, days since login.
+
+Foreign Keys: Linking to other tables (e.g., CustomerID INT).
 
 # DECIMAL
 
 ## What it is
 
+DECIMAL (also known as NUMERIC) is an exact fixed-point number. It does not round values; it stores them exactly as you define.
+
+Precision (p): The total number of digits (both left and right of the dot).
+
+Scale (s): The number of digits after the decimal point.
+
+Storage: Variable (5 to 17 bytes) depending on precision.
+
 ## Example
 
+Scenario: Storing financial values where accuracy is legally required.
+DECIMAL(19, 4) is the standard for currency (19 total digits, 4 decimal places).
+Max value: 999,999,999,999,999.9999
+
+    CREATE TABLE Products (
+    Price DECIMAL(19, 4)
+    );
+
+    INSERT INTO Products VALUES (19.99); -- Stored exactly as 19.9900
+
 ## When to Use
+
+Money: Salaries, Product Prices, Tax Rates, Invoices.
+
+Scientific Stats: Where precision is non-negotiable (e.g., "Latitude/Longitude" often uses DECIMAL(9,6)).
+
+Avoid: Do not use FLOAT for money. FLOAT uses "floating point math" which can result in 19.99 becoming 19.9900000001 inside the processor.
 
 # BIT
 
 ## What it is
 
+BIT is the SQL equivalent of a Boolean.
+
+Values: It can hold 1 (True), 0 (False), or NULL (Unknown).
+
+Efficiency: SQL Server optimizes this incredibly well. If you have multiple BIT columns in a table (up to 8), the engine packs them all into a single byte of storage.
+
 ## Example
 
+-- Scenario: Simple flags (True/False)
+
+    CREATE TABLE Emails (
+    IsVerified BIT,
+    IsSubscribed BIT
+    );
+
+-- In C# / .NET Core:
+-- public bool IsVerified { get; set; } maps directly to this column.
+
 ## When to Use
+
+Toggles: Active/Inactive, Visible/Hidden, Yes/No.
+
+Permission Flags: IsAdmin, CanEdit.
 
 # DATETIME2
 
 ## What it is
 
+DATETIME2 is the modern, high-precision upgrade to the old DATETIME.
+
+Range: 0001-01-01 through 9999-12-31. (Old DATETIME crashed on dates before 1753).
+
+Precision: accurate to 100 nanoseconds.
+
+Storage: Variable (6 to 8 bytes), often smaller than the old DATETIME (8 bytes).
+
 ## Example
+
+-- Scenario: Audit logs requiring exact timing.
+    
+    CREATE TABLE AccessLogs (
+    LogTime DATETIME2(7) -- (7) denotes max precision
+    );
+
+    INSERT INTO AccessLogs VALUES ('2026-01-21 14:30:05.1234567');
 
 ## When to Use
 
-# INT
+Always: For any new development in .NET Core 6+, this should be your default for timestamps.
 
-## What it is
+Audit Trails: When you need to know exactly what order events happened in, down to the nanosecond (e.g., High-frequency trading).
 
-## Example
-
-## When to Use
+Historical Data: If storing birthdays or historical events (e.g., "Shakespeare born in 1564"), DATETIME2 works; the old DATETIME would fail.
 
 
 

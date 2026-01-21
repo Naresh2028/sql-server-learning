@@ -248,13 +248,8 @@ Storage: Variable (6 to 8 bytes), often smaller than the old DATETIME (8 bytes).
 
 ## When to Use
 
-Always: For any new development in .NET Core 6+, this should be your default for timestamps.
+Always: For any new development in .NET Core, this should be your default for timestamps.
 
 Audit Trails: When you need to know exactly what order events happened in, down to the nanosecond (e.g., High-frequency trading).
 
 Historical Data: If storing birthdays or historical events (e.g., "Shakespeare born in 1564"), DATETIME2 works; the old DATETIME would fail.
-
-
-
-
-

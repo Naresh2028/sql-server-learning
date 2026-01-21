@@ -43,7 +43,23 @@ Efficiency: It ensures the database doesn't waste 1GB of space to store the numb
 
 "Size doesn't matter": False. Defining a column as VARCHAR(MAX) for everything "just in case" destroys performance because it prevents the database from optimizing storage on the page.
 
-Mapping: Every SQL Data Type maps to a specific C# .NET type (e.g., BIT = bool, INT = int).
+Every SQL Data Type does have a corresponding C# .NET type. This is critical for you as a .NET Core developer because Entity Framework (EF Core) relies on these pairs to work correctly.
+
+-- Important Notes
+
+While the types map, the Nullability does not always map automatically. This is where 90% of bugs happen.
+
+The Scenario:
+
+SQL: You have an INT column called Age that allows NULL (e.g., we don't know the user's age).
+
+C#: You map this to a standard int Age { get; set; }.
+
+The Crash: When your C# code reads a row where Age is NULL, your application will crash immediately with an invalid cast exception because a standard C# int cannot be null.
+
+The Fix: You must use the Nullable version in C#: public int? Age { get; set; }
+
+So, while the types map (Int → Int), the rules require you to be careful about that ? symbol.
 
 
 ## Example

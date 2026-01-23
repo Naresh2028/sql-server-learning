@@ -15,6 +15,14 @@ A. Rows with nearby clustered key values are stored next to each other
 
 B.  Range scans (BETWEEN, >, <) can read data sequentially with minimal disk I/O
 
+## Visual Representation
+
+![Clustered Index Physical Ordering](./images/clustered-physical-order.png)
+
+A clustered index defines the physical order of rows on disk.
+Because data itself is sorted, only one clustered index can exist per table.
+
+
 ## Analogy
 
 The phone book is not just a list of names; the entire physical book is organized alphabetically by name.

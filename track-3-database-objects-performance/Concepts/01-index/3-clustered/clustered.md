@@ -17,7 +17,7 @@ B.  Range scans (BETWEEN, >, <) can read data sequentially with minimal disk I/O
 
 ## Visual Representation
 
-![Clustered Index Physical Ordering](./images/clustered-physical-order.png)
+![Clustered Index Physical Ordering](https://share.google/bFskceemUbyKkqp5N)
 
 A clustered index defines the physical order of rows on disk.
 Because data itself is sorted, only one clustered index can exist per table.

@@ -1,21 +1,18 @@
-track 4: SSMS, Administration & Real-World Scenarios 
+# Track-4: SQL Server – Practical Operations (Developer Focused)
 
-SSMS & Operations
-- [x] SSMS navigation and features
-- [ ] query tuning tools, Activity Monitor, profiler basics
-- [ ] backup/restore concepts
+## SSMS & Daily Debugging
+- [x] SSMS navigation
+- [ ] Activity Monitor (blocking, slow queries)
+- [ ] Execution Plan (basic read)
 
-Security    
-- [ ] users, roles, permissions
-- [ ] schemas
-- [ ] Encryption (TDE, Always Encrypted)
-- [ ] Row-level security (RLS)
+## Backup & Recovery (Conceptual)
+- [ ] Full / Differential / Log backups
+- [ ] Restore scenarios (what, when, why)
 
-Automation & Monitoring
-- [ ] Database Mail
-- [ ] SQL Server Agent jobs overview
+## Security Basics
+- [ ] Users, roles, permissions
+- [ ] Schemas & ownership
 
-Data Integration & Real-World Tasks
-- [ ] JSON handling
-- [ ] XML basics
-- [ ] import/export data (BULK INSERT, BCP) Practice
+## Data Movement (Real-World)
+- [ ] BULK INSERT
+- [ ] Import / Export scenarios

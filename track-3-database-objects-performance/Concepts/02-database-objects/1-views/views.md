@@ -1,8 +1,8 @@
-# VIEWS
+# VIEW
 
 In .NET Core development, Views are often used to simplify the data access layer. Instead of writing a complex 20-line SQL query inside your C# code, you can simply call SELECT * FROM ViewName
 
-## What is Views?
+## What is a View?
 
 A View is a virtual table based on the result-set of an SQL statement. It contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
 
@@ -39,7 +39,7 @@ Heavy Nesting: Avoid creating "Views of Views of Views." This creates a "Tower o
 
 ## What Problem Does It Solve?
 
-It solves the Abstraction and Security problem. It decouples your application code from your database schema. If the table structure changes, you can just update the View definition without recompiling your C# code.
+It solves the Abstraction and Security problem. It decouples your application code from your database schema. Views reduce the impact of schema changes by providing a stable contract, but breaking changes in column names or data types can still affect dependent code.
 
 ## Common Misconceptions / Important Notes
 
@@ -48,6 +48,8 @@ It solves the Abstraction and Security problem. It decouples your application co
 "Views are read-only": Partially False. You can update data through a simple view (affecting one table), but it is generally safer and cleaner to treat them as read-only.
 
 "ORDER BY usage": You cannot use ORDER BY inside a View definition unless you also use TOP or OFFSET. Sorting should be done when selecting from the view, not defining it.
+
+SCHEMABINDING: By default, views are not schema-bound, meaning underlying tables can change without warning. For critical systems, schema binding is sometimes used to prevent accidental changes.
 
 ## Example
 

@@ -5,6 +5,8 @@ A Non-Clustered Index is an index structure separate from the data rows. It cont
 
 Unlike a Clustered Index (which is the table), the Non-Clustered index is a side-list. You can have many non-clustered indexes on a single table (up to 999), creating multiple ways to look up data efficiently.
 
+https://share.google/iU8c9Nkkj9ajKn27c
+
 ## Analogy
 
 Think of the Index at the Back of a Textbook.

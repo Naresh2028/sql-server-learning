@@ -5,7 +5,17 @@ A Non-Clustered Index is an index structure separate from the data rows. It cont
 
 Unlike a Clustered Index (which is the table), the Non-Clustered index is a side-list. You can have many non-clustered indexes on a single table (up to 999), creating multiple ways to look up data efficiently.
 
-https://share.google/iU8c9Nkkj9ajKn27c
+Internally, a non-clustered index stores its data in a B-Tree structure where:
+
+The leaf level contains the index key values
+
+Along with a pointer to the actual data row
+
+The type of pointer depends on the table:
+
+Clustered table → pointer is the Clustered Key
+
+Heap (no clustered index) → pointer is a RID (Row Identifier)
 
 ## Analogy
 
@@ -16,6 +26,8 @@ The Textbook itself (the pages with the actual content) is organized by Chapter 
 The Index at the back lists keywords alphabetically (e.g., "Photosynthesis") and gives you a page number (e.g., "Page 42").
 
 To find info: You look up the word in the back (Index Seek), get the page number (Pointer), and then flip to the actual page to read the paragraph (Key Lookup).
+
+This extra step of jumping from the index to the actual page in the book is exactly what SQL Server calls a Key Lookup.
 
 ## Syntax
 
@@ -37,9 +49,22 @@ Returning All Columns (SELECT *): If you select every column in the table, the N
 
 Low Selectivity Columns: Don't put it on a column like Gender (Male/Female). It's not efficient to "jump" to the table for 50% of the rows.
 
+INCLUDE columns are stored only at the leaf level of the index.
+They do not affect sorting but allow SQL Server to satisfy a query without performing a Key Lookup, turning a seek + lookup into a single seek.
+
 ## What Problem Does It Solve?
 
 It solves the "Multiple Search Paths" problem. A table can only be physically sorted one way (Clustered). But users search in many ways (by Name, by Date, by Price). Non-Clustered indexes allow you to have virtually sorted lists for all these different search patterns without duplicating the massive table data.
+
+How it works at runtime:
+
+SQL Server performs an Index Seek on the non-clustered index B-Tree.
+
+It finds matching index keys.
+
+For each match, it uses the stored pointer to locate the actual row.
+
+If required columns are missing, it performs a Key Lookup to fetch them from the base table.
 
 ## Common Misconceptions / Important Notes
 
@@ -59,6 +84,9 @@ Scenario: You frequently look up orders by OrderDate, but the table is physicall
     ON Orders (OrderDate);
 
 -- 2. Run the Query
+
+-- This query will cause a Key Lookup
+-- because CustomerName is not in the index
 
     SELECT OrderID, CustomerName 
     FROM Orders 

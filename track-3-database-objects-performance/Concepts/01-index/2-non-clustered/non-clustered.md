@@ -17,9 +17,6 @@ Clustered table → pointer is the Clustered Key
 
 Heap (no clustered index) → pointer is a RID (Row Identifier)
 
-### Non-Clustered Index (Pointer Based)
-![Non Clustered Index Lookup](../../assets/indexes/non-clustered-index-lookup.png)
-
 ## Analogy
 
 Think of the Index at the Back of a Textbook.

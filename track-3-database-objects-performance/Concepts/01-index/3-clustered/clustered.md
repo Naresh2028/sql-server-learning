@@ -6,6 +6,15 @@ A Clustered Index sorts and stores the data rows of the table or view in order b
 
 Because the data rows themselves are sorted and stored in the index, the Clustered Index IS the table. For this reason, there can be only one Clustered Index per table (because data cannot be physically sorted in two different ways at the same time).
 
+Physically, SQL Server stores table data on 8 KB data pages.
+A clustered index defines the physical order of these pages on disk based on the clustered key.
+
+This means:
+
+A. Rows with nearby clustered key values are stored next to each other
+
+B.  Range scans (BETWEEN, >, <) can read data sequentially with minimal disk I/O
+
 ## Analogy
 
 The phone book is not just a list of names; the entire physical book is organized alphabetically by name.
@@ -26,6 +35,12 @@ You cannot create a second Clustered Index on "Phone Number" because you cannot 
 
     ALTER TABLE TableName 
     ADD CONSTRAINT PK_TableName PRIMARY KEY CLUSTERED (ID);
+
+Important:
+
+1. If a table already has a clustered index, creating a PRIMARY KEY will create it as NONCLUSTERED by default
+
+2. SQL Server creates a clustered index for the PRIMARY KEY only if no clustered index already exists
 
 ## When to Use
 
@@ -52,6 +67,12 @@ It solves the Sequential Access problem. It minimizes Disk I/O by keeping relate
 "Primary Key is always Clustered": True by default, but not mandatory. You can configure a table to have a Non-Clustered Primary Key and a Clustered Index on a different column (e.g., Date), though this is an advanced technique.
 
 "Heap": A table without a Clustered Index is called a Heap. Data is stored in no particular order, which makes retrieval very slow for large datasets.
+
+Logical vs Physical Order:
+
+ORDER BY controls the logical output order of a query.
+The clustered index controls the physical storage order on disk.
+They are related but not the same thing.
 
 ## Example
 

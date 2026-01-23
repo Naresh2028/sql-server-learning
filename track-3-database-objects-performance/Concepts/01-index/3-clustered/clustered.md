@@ -15,11 +15,6 @@ A. Rows with nearby clustered key values are stored next to each other
 
 B.  Range scans (BETWEEN, >, <) can read data sequentially with minimal disk I/O
 
-## Visual Representation
-
-## Visual Representation
-![Clustered Index Physical Order](https://www.sqlshack.com/wp-content/uploads/2019/02/clustered-index-in-sql-server.png)
-
 
 A clustered index defines the physical order of rows on disk.
 Because data itself is sorted, only one clustered index can exist per table.

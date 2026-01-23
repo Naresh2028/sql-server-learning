@@ -15,9 +15,6 @@ This structure guarantees predictable performance, allowing SQL Server to locate
 
 Its primary purpose is to allow the SQL Server database engine to find data without scanning every single row in the table.
 
-## Visual Representation
-
-![Index Seek vs Table Scan](./images/index-seek-vs-scan.png)
 
 An index acts like a lookup structure (B-Tree) that allows SQL Server to
 jump directly to relevant rows instead of scanning the entire table.

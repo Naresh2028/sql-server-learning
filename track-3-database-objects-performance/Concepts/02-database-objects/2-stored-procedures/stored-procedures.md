@@ -4,7 +4,7 @@ In the context of .NET Core development, Stored Procedures (SP) are often the "b
 
 ## What is Stored Procedure?
 
-A Stored Procedure is a pre-compiled collection of SQL statements stored under a name in the database. It can accept input parameters, execute complex logic (loops, if/else), and return multiple result sets or output parameters.
+A Stored Procedure is a named, stored collection of SQL statements whose execution plan is compiled and cached by SQL Server, typically on first execution.
 
 Unlike a standard SELECT query which is sent as raw text every time, a Stored Procedure is parsed, optimized, and compiled by the database engine ahead of time (mostly).
 
@@ -20,7 +20,7 @@ It is Faster: You say fewer words (less network traffic).
 
 It is Pre-defined: The kitchen knows exactly how to make it efficiently.
 
-It is Secure: You can't ask for "The #1 Combo but with poison" (SQL Injection protection).
+A Stored Procedure is a named, stored collection of SQL statements whose execution plan is compiled and cached by SQL Server, typically on first execution.
 
 ## Syntax
 
@@ -96,9 +96,10 @@ BEGIN
         COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
+    IF @@TRANCOUNT > 0
         ROLLBACK TRANSACTION;
-        THROW; -- Re-throw error to C#
-    END CATCH
+    THROW;
+END CATCH
 END
 
 Usage: EXEC sp_UpdateProductPrice @ProductID = 101, @NewPrice = 19.99;

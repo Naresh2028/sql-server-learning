@@ -1,6 +1,8 @@
-track-5 cloud & modern data stack
+# Track-5: Cloud Awareness (Developer-Level Only)
 
-- [x] Azure SQL Database (Managed Instance, Single DB)
-- [ ] Infrastructure-as-Code (IaC) Provisioning 
-- [ ] Observability & Performance Monitoring
-- [ ] Cost Optimization & Governance
+- [x] Create Azure SQL Database
+- [ ] Connect via connection string
+- [ ] Azure SQL vs On-Prem (concept)
+- [ ] Authentication basics (SQL vs Azure AD)
+- [ ] Performance tiers (DTU / vCore – awareness)
+- [ ] Cost awareness (basic)

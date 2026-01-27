@@ -5,7 +5,8 @@ In SQL Server, when developers say "Temporary Variable" in the context of storin
 ## What is Temporary variable?
 A Table Variable is a special type of local variable that can store an entire table of data (rows and columns) instead of just a single value.
 
-Like a standard variable (DECLARE @x INT), it exists only in memory (conceptually) and only for the duration of the specific batch of code where it is defined. Once that specific block of code finishes running, the variable vanishes instantly.
+Like a standard variable (DECLARE @x INT), it exists conceptually as a variable, but is physically stored in tempdb when needed.
+only for the duration of the specific batch of code where it is defined. Once that specific block of code finishes running, the variable vanishes instantly.
 
 ## Analogy
 Think of a Sticky Note (Post-it) on your desk.
@@ -35,7 +36,7 @@ Small Datasets: Perfect for holding small lists (e.g., less than 100 rows), like
 
 User-Defined Functions: You cannot use Temporary Tables (#Table) inside a Function, but you can use Table Variables.
 
-Loop Processing: If you are iterating through a list of items in a WHILE loop, table variables are faster because they cause fewer "recompilations" of your query plan.
+Loop Processing: Table variables can be convenient inside loops because they do not cause recompilations like temp tables, but this benefit disappears as data size grows.
 
 ## When NOT to Use
 
@@ -47,7 +48,7 @@ Indexing: You cannot add an index after creating the variable. (Note: You can de
 
 ## What Problem Does It Solve?
 
-It solves the "Locking & Logging Overhead" problem. Temp Tables (#Table) require transaction logging and locking in the system database. Table Variables generate much less logging activity, making them extremely lightweight for quick, small operations.
+It reduces recompilation overhead and simplifies short-lived data storage, but does not eliminate logging or tempdb usage. Temp Tables (#Table) require transaction logging and locking in the system database. Table Variables generate much less logging activity, making them extremely lightweight for quick, small operations.
 
 ## Common Misconceptions / Important Notes
 

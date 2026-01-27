@@ -51,10 +51,10 @@ It solves the "Optional Parameters" complexity. Without Dynamic SQL, you often e
 
 SQL Injection: This is the biggest risk. If you simply paste strings together, a user can type '; DROP TABLE Users; -- into a search box and delete your database. Always use sp_executesql with parameters.
 
-
 Plan Caching: sp_executesql is smart—it saves the execution plan so it can be reused. EXEC(@SQL) does not reuse plans well, leading to slower performance.
 
-Permissions: The user running the Dynamic SQL needs permissions on the underlying tables, not just the Stored Procedure.
+Permissions: Dynamic SQL executes under the caller's security context by default.
+To avoid exposing table permissions, use ownership chaining or EXECUTE AS inside the stored procedure.
 
 ## Example
 

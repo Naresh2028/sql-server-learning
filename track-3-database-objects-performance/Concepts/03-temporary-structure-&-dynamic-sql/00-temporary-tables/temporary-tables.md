@@ -2,7 +2,7 @@
 
 In complex .NET Core applications, you often need to perform multi-step data processing that is too complicated for a single query but doesn't deserve a permanent table. Temporary Tables are the standard solution.
 
-## What is Table Table?
+## What is Temporary Table?
 
 A Temporary Table is a table that physically exists in the database (specifically in the system database called tempdb), but it is generally visible only to the user who created it and is automatically deleted when that user disconnects.
 
@@ -10,7 +10,7 @@ There are two main types:
 
 Local Temp Table (#Name): Visible only to the current connection. (Most common).
 
-Global Temp Table (##Name): Visible to everyone, deleted when the last connection referencing it closes. (Rarely used).
+Global Temp Table (##Name): Visible to all sessions, deleted when the last session using it disconnects.
 
 ## Analogy
 Think of a Whiteboard in a Meeting Room.
@@ -59,7 +59,8 @@ It solves the "Divide and Conquer" problem. It allows you to break a massive, un
 
 ## Common Misconceptions / Important Notes
 
-"They live in RAM": False. They live in the tempdb database on the hard drive (though SQL Server caches them in RAM if possible).
+"They live in RAM": False. They are stored in tempdb (disk-backed), though SQL Server
+may cache pages in memory.
 
 "Table Variables are better": It depends. Table Variables (@Table) are memory-only but cannot have indexes (mostly). For large datasets (>100 rows), Temp Tables (#Table) are usually faster because they support statistics and indexing.
 
@@ -87,5 +88,6 @@ FROM #TopSpenders t
 JOIN OrderItems oi ON t.CustomerID = oi.CustomerID
 WHERE oi.ItemName = 'Banana';
 
--- 3. Cleanup (Good practice, though automatic)
+-- 3. Cleanup (Good practice; otherwise dropped automatically when session ends)
 DROP TABLE #TopSpenders;
+

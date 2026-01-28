@@ -45,7 +45,11 @@ User Input (without parameters): Never concatenate user input directly into the 
 
 ## What Problem Does It Solve?
 
-It solves the "Optional Parameters" complexity. Without Dynamic SQL, you often end up writing "Kitchen Sink" queries (WHERE (@Name IS NULL OR Name = @Name) AND ...), which can suffer from terrible performance (parameter sniffing). Dynamic SQL allows you to execute only the specific filters requested.
+It solves the "Optional Parameters" complexity. Without Dynamic SQL, you often end up writing "Kitchen Sink" queries 
+(WHERE (@Name IS NULL OR Name = @Name) AND ...), which can lead to poor cardinality estimates and inefficient execution plans. 
+Dynamic SQL allows SQL Server to generate execution plans that match only the filters actually requested, improving performance 
+when used carefully.
+
 
 ## Common Misconceptions / Important Notes
 

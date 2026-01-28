@@ -25,6 +25,14 @@
 - [ ] table variables
 - [ ] dynamic SQL
 
-## Concurrency, Isolation, & Deadlocks
-- [ ] Locking & blocking
-- [ ] deadlocks & Isolation levels
+## Performance & Concerrency
+
+### Part 1: The "Single User" Performance
+- [ ] Execution Plan
+- [ ] Statistics
+- [ ] Query Optimization (Seargable)
+
+### Part 2: The "Multi-User" Performance
+- [ ] Locaking & Blocking
+- [ ] Isonlation Levels
+- [ ] Deadlocks

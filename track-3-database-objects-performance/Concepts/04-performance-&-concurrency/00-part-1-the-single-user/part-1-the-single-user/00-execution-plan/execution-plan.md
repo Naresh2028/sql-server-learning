@@ -7,7 +7,7 @@ This is the single most important tool for a Senior Backend Developer. It is the
 An Execution Plan (often called a Query Plan) is the step-by-step roadmap that the SQL Server Query Optimizer generates to carry out a specific query.
 
 It reveals exactly how the database engine retrieves your data—whether it scans the entire table, uses a specific index, 
-performs a join loop, or sorts data in memory. It assigns a "Cost" (CPU and I/O effort) to each step.
+performs a join loop, or sorts data in memory. It assigns a relative estimated cost to each step, based on expected CPU and I/O effort.
 
 ## Analogy
 
@@ -19,7 +19,7 @@ The Optimizer: The GPS Algorithm (Google Maps). It analyzes road types (Tables),
 
 The Execution Plan: The specific turn-by-turn directions it hands you (e.g., "Take Highway 401," "Turn Left on Main St").
 
-Just like a GPS might choose a bad route because it didn't know about a road closure, SQL Server might choose a bad plan if its "Statistics" are outdated.
+Just like a GPS might choose a bad route because it didn’t know about a road closure, SQL Server might choose a bad plan if its statistics are outdated or if parameter values change significantly.
 
 ## Syntax
 
@@ -48,13 +48,13 @@ Slow Query Debugging: When a query takes 5 seconds instead of 50ms. The plan wil
 
 Index Verification: To confirm if your newly created index is actually being used ("Index Seek") or ignored ("Table Scan").
 
-Deadlock Analysis: To see which specific resources (rows/pages) are being locked during execution.
+Deadlock Analysis: Execution plans help understand why a query holds locks, but deadlock graphs and Extended Events are the primary tools.
 
 ## When NOT to Use
 
 Trivial Queries: Checking the plan for SELECT * FROM Config (where the table has 5 rows) is a waste of time.
 
-Production Profiling: Generating Actual Execution Plans adds significant overhead to the server. Do not leave this enabled permanently on a high-traffic production system.
+Production Profiling: Generating Actual Execution Plans adds significant overhead to the server. Do not enable Actual Execution Plans continuously on a high-traffic production system, as they add noticeable runtime overhead.
 
 ## What Problem Does It Solve?
 

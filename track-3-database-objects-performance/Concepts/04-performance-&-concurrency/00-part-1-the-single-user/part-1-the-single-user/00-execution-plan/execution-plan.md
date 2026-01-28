@@ -25,22 +25,11 @@ Just like a GPS might choose a bad route because it didn’t know about a road c
 
 You do not "write" a plan; you ask SQL Server to show it to you.
 
-Method 1: SQL Server Management Studio (GUI)
+SQL Server Management Studio (GUI)
 
 Estimated Plan: Press Ctrl + L. (Shows what SQL plans to do without running the query).
 
 Actual Plan: Press Ctrl + M (Enables the feature), then run the query. (Shows what SQL actually did).
-
-Method 2: T-SQL Commands
-
-```sql
--- Text version of the estimated plan
-SET SHOWPLAN_TEXT ON;
-GO
-SELECT * FROM Users WHERE UserID = 10;
-GO
-SET SHOWPLAN_TEXT OFF;
-```
 
 ## When to Use
 
@@ -88,7 +77,7 @@ The Plan Analysis:
 
 Operator: 🔍 Table Scan
 
-Cost: 100%
+Cost: Dominant operator (highest relative cost)
 
 Meaning: "I had to read every single page of the book to find 'Smith'."
 
@@ -96,7 +85,7 @@ Meaning: "I had to read every single page of the book to find 'Smith'."
 
 Operator: 🔑 Index Seek
 
-Cost: 2%
+Cost: Minimal relative cost
 
 Meaning: "I used the index to jump directly to 'Smith'."
 

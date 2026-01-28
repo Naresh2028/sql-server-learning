@@ -12,7 +12,6 @@
 - [ ] non-clustered
 - [ ] clustered
 - [ ] INCLUDE
-- [ ] Execution plan
 
 ## Database Objects
 - [ ] Views
@@ -25,14 +24,14 @@
 - [ ] table variables
 - [ ] dynamic SQL
 
-## Performance & Concerrency
+## Performance & Concurrency
 
 ### Part 1: The "Single User" Performance
 - [ ] Execution Plan
 - [ ] Statistics
-- [ ] Query Optimization (Seargable)
+- [ ] Query Optimization (SARGable)
 
 ### Part 2: The "Multi-User" Performance
-- [ ] Locaking & Blocking
-- [ ] Isonlation Levels
+- [ ] Locking & Blocking
+- [ ] Isolation Levels
 - [ ] Deadlocks

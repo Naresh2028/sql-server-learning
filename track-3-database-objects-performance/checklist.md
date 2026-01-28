@@ -11,6 +11,8 @@
 - [ ] Indexes 
 - [ ] non-clustered
 - [ ] clustered
+- [ ] INCLUDE
+- [ ] Execution plan
 
 ## Database Objects
 - [ ] Views

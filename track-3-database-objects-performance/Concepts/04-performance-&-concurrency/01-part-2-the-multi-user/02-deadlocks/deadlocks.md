@@ -2,7 +2,7 @@
 
 In the context of SQL Server databases, a Deadlock is widely considered the most frustrating concurrency issue because it results in the database engine forcibly killing one of the processes.
 
-## What is Deadlocks?
+## What is a Deadlock?
 
 A Deadlock occurs when two (or more) processes are blocking each other in a circular chain, such that neither process can proceed.
 
@@ -45,9 +45,10 @@ BEGIN CATCH
     -- Check if the error is a Deadlock (1205)
     IF ERROR_NUMBER() = 1205
     BEGIN
+    IF @@TRANCOUNT > 0
         ROLLBACK TRANSACTION;
-        -- Logic to wait 2 seconds and retry the transaction
-        PRINT 'Deadlock detected. Retrying...';
+
+    PRINT 'Deadlock detected. Retrying...';
     END
     ELSE
     BEGIN

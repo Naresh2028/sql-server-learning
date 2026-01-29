@@ -40,19 +40,19 @@ COMMIT;
 
 ## When to Use
 
-READ UNCOMMITTED:
+### READ UNCOMMITTED:
 
 Use for: Analytics, "ballpark" counting, or reports where exact precision doesn't matter but speed is critical (No locking).
 
-READ COMMITTED (The Default):
+### READ COMMITTED (The Default):
 
 Use for: 99% of standard applications. It prevents reading "Dirty Data" (uncommitted changes) but doesn't stop data from changing between two reads.
 
-REPEATABLE READ:
+### REPEATABLE READ:
 
 Use for: When you need to read a row twice in one transaction and guarantee it hasn't changed in between (e.g., verifying inventory before and after a calculation).
 
-SERIALIZABLE:
+### SERIALIZABLE:
 
 Use for: Critical financial transactions. It prevents "Phantom Reads" (new rows appearing). It effectively turns the database into a single-lane road.
 

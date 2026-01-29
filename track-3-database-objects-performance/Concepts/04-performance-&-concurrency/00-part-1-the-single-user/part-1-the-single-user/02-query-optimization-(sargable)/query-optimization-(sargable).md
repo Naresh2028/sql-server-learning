@@ -2,7 +2,7 @@
 
 In the context of .NET Core and SQL Server, SARGable is the most critical concept for writing high-performance SQL. If your queries are not SARGable, your Indexes are useless.
 
-## What is Query Optmization?
+## What is Query Optimization?
 
 SARGable stands for "Search ARGument ABLE".
 
@@ -50,7 +50,7 @@ Joining: Anytime you use an ON clause in a JOIN.
 
 Small Tables: On a table with 50 rows, the difference is negligible (microseconds).
 
-Business Logic constraints: Sometimes complex logic (e.g., hash comparisons) is unavoidable, but 99% of queries should be SARGable.
+Unavoidable logic: In rare cases (e.g., cryptographic hashes or computed comparisons), non-SARGable logic may be unavoidable.
 
 ## What Problem Does It Solve?
 
@@ -82,7 +82,7 @@ WHERE UPPER(FirstName) = 'JOHN';
 2. The SARGable Way (Fast)
 
 ````sql
--- SQL Server is case-insensitive by default. 
+-- Most SQL Server installations use a case-insensitive collation by default.
 -- We search the raw column directly.
 SELECT * FROM Users 
 WHERE FirstName = 'John';
@@ -90,5 +90,3 @@ WHERE FirstName = 'John';
 -- Result: Index Seek (Reads 5 rows).
 
 ````
-
-

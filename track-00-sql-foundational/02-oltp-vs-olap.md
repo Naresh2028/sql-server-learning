@@ -1,2 +1,0 @@
-# OLTP vs OLAP
-

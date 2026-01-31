@@ -22,7 +22,7 @@ Messages/Results: Your status display (did the command work?).
 
 ## Visual Representaion
 
-<img src="04-images/SSMS.png" alt="SSMS Interface" width="600"/>
+! [SSMS Image] (/track-4-ssms-Adminstration/Concepts/04-images/SSMS.png)
 
 ## Notes
 

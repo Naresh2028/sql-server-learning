@@ -22,7 +22,8 @@ Messages/Results: Your status display (did the command work?).
 
 ## Visual Representaion
 
-![SSMS](../04-images/SSMS.png)
+<img width="1444" height="764" alt="image" src="https://github.com/user-attachments/assets/159775ab-1471-49bc-9793-412a518fd047" />
+
 
 ## Notes
 

@@ -22,7 +22,7 @@ Messages/Results: Your status display (did the command work?).
 
 ## Visual Representaion
 
-![SSMS Image](./04-images/SSMS.png)
+![SSMS Image](track-4-ssms-Adminstration/Concepts/04-images/SSMS.png)
 
 ## Notes
 

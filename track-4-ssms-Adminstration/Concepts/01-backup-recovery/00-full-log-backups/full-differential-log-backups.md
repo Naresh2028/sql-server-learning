@@ -1,7 +1,9 @@
 # BACKUP & RECOVERY
 
 ## What is Backup & Recovery?
-Backup is the process of creating a copy of your data to protect against data loss (accidental deletion, hardware failure, or corruption). Recovery (Restore) is the process of taking that copy and overwriting the current database (or creating a new one) to bring the data back to a specific point in time.
+Backup is the process of creating a copy of your data to protect against data loss (accidental deletion, hardware failure, or corruption). 
+
+Recovery (Restore) is the process of taking that copy and overwriting the current database (or creating a new one) to bring the data back to a specific point in time.
 
 
 ## Analogy

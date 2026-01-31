@@ -3,16 +3,16 @@
 ## SSMS & Daily Debugging
 - [x] SSMS navigation
 - [ ] Activity Monitor (blocking, slow queries)
-- [ ] Execution Plan (basic read)
+- [ ] Execution Plan
 
-## Backup & Recovery (Conceptual)
+## Backup & Recovery
 - [ ] Full / Differential / Log backups
-- [ ] Restore scenarios (what, when, why)
+- [ ] Restore scenarios
 
 ## Security Basics
 - [ ] Users, roles, permissions
 - [ ] Schemas & ownership
 
-## Data Movement (Real-World)
+## Data Movement
 - [ ] BULK INSERT
 - [ ] Import / Export scenarios

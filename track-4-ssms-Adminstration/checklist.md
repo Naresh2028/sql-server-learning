@@ -1,4 +1,4 @@
-# Track-4: SQL Server – Practical Operations (Developer Focused)
+# Track-4: SQL Server – Practical Operations
 
 ## SSMS & Daily Debugging
 - [x] SSMS navigation

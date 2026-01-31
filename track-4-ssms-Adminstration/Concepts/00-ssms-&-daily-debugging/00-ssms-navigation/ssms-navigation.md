@@ -21,8 +21,8 @@ Query Window: Your steering yoke (where you give commands).
 Messages/Results: Your status display (did the command work?).
 
 ## Visual Representaion
-![SSMS Interface](Concepts/04-images/SSMS.png)
 
+![SSMS Interface](track-4-ssms-Adminstration/Concepts/04-images/SSMS.png)
 
 ## Notes
 

@@ -3,7 +3,6 @@
 ## SSMS & Daily Debugging
 - [x] SSMS navigation
 - [ ] Activity Monitor (blocking, slow queries)
-- [ ] Execution Plan
 
 ## Backup & Recovery
 - [ ] Full / Differential / Log backups

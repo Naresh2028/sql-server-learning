@@ -22,7 +22,7 @@ Messages/Results: Your status display (did the command work?).
 
 ## Visual Representaion
 
-![SSMS Object Explorer](../04-images/SSMS.png)
+![SSMS](../04-images/SSMS.png)
 
 ## Notes
 

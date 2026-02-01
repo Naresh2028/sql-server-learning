@@ -13,6 +13,7 @@ usage to support **.NET, Angular, and Agentic AI applications**.
 - [ ] Normalization
 - [ ] Denormalization
 - [ ] Relationship Typws
+- [ ] Acid Properties
 
 ---
 

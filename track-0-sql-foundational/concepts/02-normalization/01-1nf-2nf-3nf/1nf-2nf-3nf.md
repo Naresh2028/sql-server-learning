@@ -39,24 +39,6 @@ Good (1NF): You create three separate rows for John Smith, each with one phone n
 | John | English |
 | Jane | Math |
 
-What it will look like when rendered:
-Problem Table (Un-Normalized):
-
-| Student | Subjects | 
-|:------- | :------- |
-| John    | Math     |
-| Science | English  |
-| Jane    | Math     |
-
-Solution (1NF):
-
-| Student | Subject | 
-| :------- |  :----- | 
-| John     | Math    | 
-| John     | Science |
-| John     | English |
-| Jane     | Math    |
-
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/87e87d5d-d284-4666-b07f-92c2bdbc41ce" />
 
 

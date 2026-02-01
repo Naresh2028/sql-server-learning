@@ -12,7 +12,6 @@ Unique Column Names: No repeated columns (like Phone1, Phone2, Phone3).
 
 Unique Rows: Each row must be identifiable (usually by a Primary Key).
 
-<img width="340" height="390" alt="image" src="https://github.com/user-attachments/assets/460b0d62-cad1-4731-a516-2c1aa694283e" />
 
 
 ## Analogy
@@ -25,13 +24,36 @@ Good (1NF): You create three separate rows for John Smith, each with one phone n
 
 ## Example
 
-Problem Table (Un-Normalized): 
+**Problem Table (Un-Normalized):**
 
-| Student | Subjects | | :--- | :--- | | John | Math, Science, English | | Jane | Math |
+| Student | Subjects |
+| :--- | :--- |
+| John | Math, Science, English |
+| Jane | Math |
 
-Solution (1NF): 
+**Solution (1NF):**
 
-| Student | Subject | | :--- | :--- | | John | Math | | John | Science | | John | English | | Jane | Math |
+| Student | Subject |
+| :--- | :--- |
+| John | Math |
+| John | Science |
+| John | English |
+| Jane | Math |
+
+What it will look like when rendered:
+Problem Table (Un-Normalized):
+
+Student,Subjects
+John,"Math, Science, English"
+Jane,Math
+
+Solution (1NF):
+
+Student,Subject
+John,Math
+John,Science
+John,English
+Jane,Math
 
 ## Notes
 Why? SQL cannot efficiently search inside a comma-separated string (e.g., WHERE Subjects LIKE '%Math%' is slow and error-prone).

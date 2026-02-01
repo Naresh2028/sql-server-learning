@@ -14,3 +14,5 @@
 
 ## Relationship Types
 - [ ] one to one, one to many, & many to many
+
+## ACID Properties

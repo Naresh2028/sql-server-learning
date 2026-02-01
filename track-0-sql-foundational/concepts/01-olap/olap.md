@@ -157,8 +157,6 @@ The Query: To get sales by "Category", SQL joins only 2 tables: Fact → DimProd
 
 ## Star schema vs Snowflake schema
 
-<img width="2048" height="1280" alt="image" src="https://github.com/user-attachments/assets/727d7c7d-99e2-4459-813a-3b86fc440f6e" />
-
 | Feature          | Star Schema 🌟                          | Snowflake Schema ❄️                       |
 |------------------|-----------------------------------------|-------------------------------------------|
 | Structure        | Denormalized (Flat)                     | Normalized (Hierarchical)                  |
@@ -169,4 +167,4 @@ The Query: To get sales by "Category", SQL joins only 2 tables: Fact → DimProd
 | Power BI / BI    | Preferred (Best Performance)            | Not Recommended                            |
 
 
-
+<img width="2048" height="1280" alt="image" src="https://github.com/user-attachments/assets/727d7c7d-99e2-4459-813a-3b86fc440f6e" />

@@ -43,17 +43,11 @@ Good (1NF): You create three separate rows for John Smith, each with one phone n
 What it will look like when rendered:
 Problem Table (Un-Normalized):
 
-Student,Subjects
-John,"Math, Science, English"
-Jane,Math
+| Student | Subjects | |---------|------------------------| | John | Math, Science, English | | Jane | Math |
 
 Solution (1NF):
 
-Student,Subject
-John,Math
-John,Science
-John,English
-Jane,Math
+| Student | Subject | |---------|----------| | John | Math | | John | Science | | John | English | | Jane | Math |
 
 ## Notes
 Why? SQL cannot efficiently search inside a comma-separated string (e.g., WHERE Subjects LIKE '%Math%' is slow and error-prone).

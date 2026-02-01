@@ -7,14 +7,10 @@
 - [ ] OLAP
 
 ## Normalization
-- [ ] First Normal Form
-- [ ] Second Normal Form
-- [ ] Third Normal Form
+- [ ] First Normal Form, Second Normal Form, & Third Normal Form
 
 ## Denormalization
 - [ ] Denormalization
 
 ## Relationship Types
-- [ ] Normalization
-- [ ] Denormalization
-- [ ] Relationship Types
+- [ ] one to one, one to many, & many to many

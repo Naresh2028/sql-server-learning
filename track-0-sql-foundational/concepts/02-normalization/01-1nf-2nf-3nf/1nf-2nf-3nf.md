@@ -57,6 +57,9 @@ Solution (1NF):
 | John     | English |
 | Jane     | Math    |
 
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/87e87d5d-d284-4666-b07f-92c2bdbc41ce" />
+
+
 ## Notes
 Why? SQL cannot efficiently search inside a comma-separated string (e.g., WHERE Subjects LIKE '%Math%' is slow and error-prone).
 
@@ -108,6 +111,9 @@ The Fix: Move the Teacher Name to a separate "Course" list. Don't repeat "Mr. Sm
 | CourseID | TeacherName |
 | :--- | :--- |
 | Math | Mr. Smith |
+
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/e8f0bc0c-4b8f-44ac-bd46-46d9932562d9" />
+
 
 ## Notes
 
@@ -161,6 +167,9 @@ The Fix: Move Zip Code definitions to a separate "Zip Codes" reference list.
 | ZipCode | City |
 | :--- | :--- |
 | 10001 | New York |
+
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/81448b39-1bec-46c8-8c8e-910c3fb940d4" />
+
 
 ## Notes
 

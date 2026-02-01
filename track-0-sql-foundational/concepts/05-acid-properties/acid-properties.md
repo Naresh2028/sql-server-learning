@@ -87,68 +87,115 @@ They don't see the text disappearing character-by-character.
 
 Scenario: Two managers try to give Bob a raise at the exact same second.
 
-# Transaction Isolation Example
-
-## Step 1: Create Table
-```sql
-CREATE TABLE Employees (
-    EmpID INT PRIMARY KEY,
-    EmpName VARCHAR(50),
-    Salary DECIMAL(10,2)
+### Step 1: The Setup
+````sql
+-- 1. Create a dummy table
+CREATE TABLE EmployeeSalaries (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Salary INT
 );
 
--- Insert initial data
-INSERT INTO Employees VALUES (1, 'Bob', 50000);
+-- 2. Insert Bob with $50,000
+INSERT INTO EmployeeSalaries VALUES (1, 'Bob', 50000);
+
+-- Check the data
+SELECT * FROM EmployeeSalaries;
 
 ````
-Step 2: Without Isolation (Race Condition)
+
+### Step 02: The "Lost Update" (What happens WITHOUT proper Isolation)
+
+Note: In a real database, simulating "no isolation" is actually hard because SQL Server tries to protect you by default!
+
+Manager A runs: SELECT Salary FROM EmployeeSalaries (Gets 50,000).
+
+Manager B runs: SELECT Salary FROM EmployeeSalaries (Gets 50,000).
+
+Manager A calculates 50k + 5k = 55k.
+
+Manager A runs: UPDATE EmployeeSalaries SET Salary = 55000.
+
+Manager B calculates 50k + 10k = 60k.
+
+Manager B runs: UPDATE EmployeeSalaries SET Salary = 60000.
+
+Result: Bob has $60,000. Manager A's $5,000 raise was completely overwritten.
+
+### Step 03: The "With Isolation" Lab (The Fix)
+
+Now, let's see how SQL Server uses Isolation (Locking) to force Manager B to wait.
+
+1. Open Query Window #1 (Manager A)
+Copy and paste this code, then Execute it. Note: This transaction will stay "open" for 15 seconds to simulate Manager A working slowly.
 
 ````sql
--- Manager A transaction
-BEGIN TRANSACTION;
-SELECT Salary FROM Employees WHERE EmpID = 1;  -- Reads 50000
-UPDATE Employees SET Salary = 55000 WHERE EmpID = 1; -- Adds 5000
-COMMIT;
 
--- Manager B transaction (running at same time)
+-- WINDOW 1 (Manager A)
 BEGIN TRANSACTION;
-SELECT Salary FROM Employees WHERE EmpID = 1;  -- Reads 50000 (stale)
-UPDATE Employees SET Salary = 60000 WHERE EmpID = 1; -- Adds 10000
-COMMIT;
 
--- Final result (Manager A's raise lost)
-SELECT * FROM Employees;
--- Output: Bob, 60000
+    -- Manager A gives a $5,000 raise
+    UPDATE EmployeeSalaries 
+    SET Salary = Salary + 5000 
+    WHERE ID = 1;
+
+    PRINT 'Manager A has updated the salary... but has NOT committed yet.';
+    
+    -- We force the system to wait 15 seconds before saving
+    WAITFOR DELAY '00:00:15';
+
+COMMIT TRANSACTION;
+PRINT 'Manager A finished!';
 
 ````
 
-Step 3: With Isolation (Serializable or Repeatable Read)
+2. IMMEDIATELY Open Query Window #2 (Manager B)
+While Window 1 is still running (within that 15 seconds), copy/paste and Execute this in a second window:
 
 ````sql
--- Manager A transaction
+-- WINDOW 2 (Manager B)
 BEGIN TRANSACTION;
-SELECT Salary FROM Employees WHERE EmpID = 1;  -- Reads 50000
-UPDATE Employees SET Salary = Salary + 5000 WHERE EmpID = 1;
-COMMIT;
 
--- Manager B transaction (forced to wait until A finishes)
-BEGIN TRANSACTION;
-SELECT Salary FROM Employees WHERE EmpID = 1;  -- Reads 55000
-UPDATE Employees SET Salary = Salary + 10000 WHERE EmpID = 1;
-COMMIT;
+    PRINT 'Manager B is trying to update...';
 
--- Final result (both raises applied correctly)
-SELECT * FROM Employees;
--- Output: Bob, 65000
+    -- Manager B tries to give a $10,000 raise
+    -- SQL Server ISOLATION will force this line to PAUSE (Spin)
+    UPDATE EmployeeSalaries 
+    SET Salary = Salary + 10000 
+    WHERE ID = 1;
+
+COMMIT TRANSACTION;
+PRINT 'Manager B finished!';
 
 ````
 
-### Key Takeaway
-Without isolation: Last writer wins → Bob ends up with $60,000.
+🕵️‍♂️ What did you see?
+1. Window 1 started and printed "Manager A has updated...".
 
-With isolation: Transactions are serialized → Bob ends up with $65,000.
+2. Window 2 started, printed "Manager B is trying...", and then FROZE. It showed "Executing query..." with a spinning wheel.
 
-Use proper isolation levels (SERIALIZABLE, REPEATABLE READ) to prevent lost updates.
+3. Why? Because of Isolation. Manager A has locked that row. The database forbids Manager B from touching it until Manager A is done.
+
+4. After 15 seconds, Window 1 finished.
+
+5. Instantly, Window 2 unfreezes, runs its update, and finishes.
+
+Step 4: Verify the Final Result
+Go back to any window and check the total.
+
+````sql
+
+SELECT * FROM EmployeeSalaries;
+
+````
+
+Result: You should see 65000.
+
+Manager A made it 55,000.
+
+Manager B waited, saw the new 55,000, and added 10,000.
+
+Total: $65,000 (Correct!)
 
 ## Notes
 

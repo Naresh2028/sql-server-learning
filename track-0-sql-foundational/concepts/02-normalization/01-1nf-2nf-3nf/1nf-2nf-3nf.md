@@ -13,7 +13,6 @@ Unique Column Names: No repeated columns (like Phone1, Phone2, Phone3).
 Unique Rows: Each row must be identifiable (usually by a Primary Key).
 
 
-
 ## Analogy
 
 Think of an Excel Spreadsheet.
@@ -75,8 +74,6 @@ This applies mostly to tables with a Composite Primary Key (a key made of 2+ col
 
 Rule: Every non-key column must depend on the entire Primary Key, not just part of it.
 
-<img width="394" height="415" alt="image" src="https://github.com/user-attachments/assets/5ea20939-0dbd-4b46-bc21-816b30ae68fc" />
-
 ## Analogy
 
 Think of a Classroom Schedule.
@@ -91,13 +88,26 @@ The Fix: Move the Teacher Name to a separate "Course" list. Don't repeat "Mr. Sm
 
 ## Example
 
-Problem Table (Key = StudentID + CourseID): | StudentID | CourseID | TeacherName | Grade | | :--- | :--- | :--- | :--- | | 1 | Math | Mr. Smith | A | | 2 | Math | Mr. Smith | B |
+**Problem Table (Key = StudentID + CourseID):**
 
-Issue: TeacherName depends only on CourseID, not on StudentID. If Student 1 drops the class, we might lose the fact that Mr. Smith teaches Math.
+| StudentID | CourseID | TeacherName | Grade |
+| :--- | :--- | :--- | :--- |
+| 1 | Math | Mr. Smith | A |
+| 2 | Math | Mr. Smith | B |
 
-Solution (2NF): Table 1: Enrollment | StudentID | CourseID | Grade | | :--- | :--- | :--- | | 1 | Math | A |
+**Solution (2NF):**
 
-Table 2: Courses | CourseID | TeacherName | | :--- | :--- | | Math | Mr. Smith |
+**Table 1: Enrollment**
+
+| StudentID | CourseID | Grade |
+| :--- | :--- | :--- |
+| 1 | Math | A |
+
+**Table 2: Courses**
+
+| CourseID | TeacherName |
+| :--- | :--- |
+| Math | Mr. Smith |
 
 ## Notes
 
@@ -117,8 +127,6 @@ Rule: Non-key columns should not depend on other non-key columns.
 
 A column should depend on "The Key, the Whole Key, and Nothing But the Key" (Bill Kent's definition).
 
-<img width="418" height="223" alt="image" src="https://github.com/user-attachments/assets/2bb77ae1-2c33-4104-9bd3-0bb7b950d349" />
-
 ## Analogy
 
 Think of an Employee List.
@@ -133,13 +141,26 @@ The Fix: Move Zip Code definitions to a separate "Zip Codes" reference list.
 
 ## Example
 
-Problem Table: | EmpID | Name | ZipCode | City | | :--- | :--- | :--- | :--- | | 101 | Alice | 10001 | New York | | 102 | Bob | 10001 | New York |
+**Problem Table:**
 
-Issue: City depends on ZipCode. If we realize Zip 10001 is actually "Manhattan," we have to fix it for every employee.
+| EmpID | Name | ZipCode | City |
+| :--- | :--- | :--- | :--- |
+| 101 | Alice | 10001 | New York |
+| 102 | Bob | 10001 | New York |
 
-Solution (3NF): Table 1: Employees | EmpID | Name | ZipCode | | :--- | :--- | :--- | | 101 | Alice | 10001 |
+**Solution (3NF):**
 
-Table 2: ZipCodes | ZipCode | City | | :--- | :--- | | 10001 | New York |
+**Table 1: Employees**
+
+| EmpID | Name | ZipCode |
+| :--- | :--- | :--- |
+| 101 | Alice | 10001 |
+
+**Table 2: ZipCodes**
+
+| ZipCode | City |
+| :--- | :--- |
+| 10001 | New York |
 
 ## Notes
 

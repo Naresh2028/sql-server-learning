@@ -42,8 +42,7 @@ The Attempt: You insert a button instead of a coin.
 
 The Result: The machine rejects the button instantly. It doesn't accept the button and then crash; it maintains its "Consistency" by refusing bad input. The machine's state (money inside) remains valid.
 
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/10f2d2c7-96ab-442c-a700-3aae05a561dd" />
-
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/e08affde-a7e6-4d92-8a9f-1232152602f0" />
 
 ## Example
 

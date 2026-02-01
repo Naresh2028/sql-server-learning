@@ -100,7 +100,7 @@ We add a AuthorName column directly to the Posts table.
 
 Query: 
 
-````
+````sql
 
 SELECT Title, AuthorName FROM Posts
 
@@ -109,5 +109,6 @@ SELECT Title, AuthorName FROM Posts
 Benefit: No Join required. Super fast.
 
 Risk: If the Author changes their name, we must update the Authors table AND thousands of rows in the Posts table.
+
 
 

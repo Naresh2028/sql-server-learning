@@ -23,8 +23,48 @@ Atomicity ensures that if step 2 fails, step 1 is undone instantly.
 
 ## Example
 
+Scenario: A bank transfer of $500 from Alice to Bob.
+
+This operation requires two distinct SQL steps:
+
+Debit: Subtract $500 from Alice.
+
+Credit: Add $500 to Bob.
+
+Atomicity guarantees that if Step 2 fails (e.g., due to a system crash or an invalid account number), Step 1 is automatically undone. Alice gets her money back.
+
+````sql
+
+BEGIN TRANSACTION;
+
+BEGIN TRY
+    -- Step 1: Take money from Alice
+    UPDATE Accounts SET Balance = Balance - 500 WHERE Name = 'Alice';
+
+    -- Step 2: Give money to Bob
+    -- (Imagine an error happens here, e.g., Bob's account is 'frozen')
+    UPDATE Accounts SET Balance = Balance + 500 WHERE Name = 'Bob';
+
+    -- If we get here, everything worked! Save it.
+    COMMIT TRANSACTION;
+    PRINT 'Transfer Successful';
+END TRY
+BEGIN CATCH
+    -- If ANY error happened above, we jump here.
+    -- Undo everything. Alice gets her $500 back.
+    ROLLBACK TRANSACTION;
+    PRINT 'Transfer Failed. Changes undone.';
+END CATCH
+
+````
+
 ## Notes
 
+The "Undo" Button: The command ROLLBACK is the magic switch. It tells the database to forget everything that happened since BEGIN TRANSACTION.
+
+Default Behavior: By default, SQL Server operates in "Auto-Commit" mode. Each individual statement is its own mini-transaction. You must explicitly use BEGIN TRANSACTION to group multiple steps together into an atomic unit.
+
+Why it matters: Without Atomicity, you would have "Orphaned Data" or "Money vanishing into thin air," which destroys trust in the system.
 
 ## What is Consistency
 

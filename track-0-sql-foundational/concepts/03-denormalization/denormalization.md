@@ -84,7 +84,13 @@ Posts table has AuthorID.
 
 Authors table has AuthorID, Name.
 
-Query: SELECT P.Title, A.Name FROM Posts P JOIN Authors A ON P.AuthorID = A.AuthorID
+Query: 
+
+````sql
+
+SELECT P.Title, A.Name FROM Posts P JOIN Authors A ON P.AuthorID = A.AuthorID
+
+````
 
 Cost: The DB must look up the Author table for every single post displayed.
 
@@ -92,9 +98,16 @@ Denormalized:
 
 We add a AuthorName column directly to the Posts table.
 
-Query: SELECT Title, AuthorName FROM Posts
+Query: 
+
+````
+
+SELECT Title, AuthorName FROM Posts
+
+````
 
 Benefit: No Join required. Super fast.
 
 Risk: If the Author changes their name, we must update the Authors table AND thousands of rows in the Posts table.
+
 

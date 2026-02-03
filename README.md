@@ -6,70 +6,58 @@ usage to support **.NET, Angular, and Agentic AI applications**.
 
 ---
 
-## Timeline
-- **Start Date:** 04 Jan 2026  
-- **Target Completion:** 3 Weeks 
-- **Daily Time:** 1–2 hours
+### TRACK-0 SQL FOUNDATIONAL
+
+- [ ] OLTP
+- [ ] OLAP
+- [ ] Normalization
+- [ ] Denormalization
+- [ ] Relationship Typws
+- [ ] Acid Properties
 
 ---
 
-## 📊 Overall Progress
-**Progress:** 4%  
-
----
-
-## 🧭 Track Checklist
-
-### Track 1 – Core T-SQL
-- [ ] SELECT
-- [ ] Filtering (WHERE, IN, BETWEEN)
-- [ ] Sorting (ORDER BY, DISTINCT, TOP)
-- [ ] JOINs
-- [ ] Aggregate Functions
-- [ ] Subqueries
-- [ ] CTEs
-
-**Status:** In Progress (30%)
+### Track 1 - Core T-SQL & Query Fundamentals
+- [ ] Data Retrieval Basics
+- [ ] Filtering Data
+- [ ] Sorting & Limiting Results
+- [ ] Combining Data from Multiple Tables
+- [ ] Aggregation Basics
+- [ ] Query Composition
 
 ---
 
 ### Track 2 – Advanced T-SQL & Data Manipulation
-- [ ] Window Functions
-- [ ] MERGE
-- [ ] Transactions
+- [ ] Data Modification
+- [ ] Combining Result Sets
+- [ ] Window Functionn
+- [ ] Practical Functions
 - [ ] Error Handling
 
-**Status:** Not Started
-
 ---
 
-### Track 3 – Database Objects & Performance
+### Track-3 database objects & performance
+- [ ] Table Design & Integrity
 - [ ] Indexes
-- [ ] Execution Plans
-- [ ] Stored Procedures
-- [ ] Functions
-
-**Status:** Not Started
+- [ ] Database Objects
+- [ ] Temporary Structure & Dynamic SQL
+- [ ] Performance & Concurrency
 
 ---
 
-### Track 4 – SSMS & Administration
-- [ ] Security
-- [ ] Backup & Restore
-- [ ] Jobs & Monitoring
-
-**Status:** Not Started
-
----
-
-### Track 5 – Cloud & Modern Data Stack
-- [ ] Azure SQL
-- [ ] Basic Performance in Cloud
-- [ ] Migration Concepts
-
-**Status:** Not Started
+### Track-4: SQL Server – Practical Operations
+- [ ] SSMS & Daily Debugging
+- [ ] Backup & Recovery
+- [ ] Security Basics
+- [ ] Data Movement
 
 ---
 
-## 🔁 Weekly Review
+### Track 5 – Production Database (Concepts implemented from track 0 to 4)
 
+- [ ] Database & Schema Creation
+- [ ] Table with Constraint Creation 
+- [ ] Funtion Creation
+- [ ] View Creation
+- [ ] Trigger Creation
+- [ ] Stored Procedure Creation

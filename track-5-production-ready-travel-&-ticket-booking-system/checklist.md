@@ -1,8 +1,9 @@
-# Track-5: Cloud Awareness (Developer-Level Only)
+# Track-5: Travel & Ticket Booking OLTP Database
 
-- [x] Create Azure SQL Database
-- [ ] Connect via connection string
-- [ ] Azure SQL vs On-Prem (concept)
-- [ ] Authentication basics (SQL vs Azure AD)
-- [ ] Performance tiers (DTU / vCore – awareness)
-- [ ] Cost awareness (basic)
+- [x] Introduction (Project explanation)
+- [ ] db Schema Creation
+- [ ] Table Constraint Creation
+- [ ] Function Creation
+- [ ] View Creation
+- [ ] Trigger Creation
+- [ ] Stored Procedure Creation
